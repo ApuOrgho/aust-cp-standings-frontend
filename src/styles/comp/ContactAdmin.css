@@ -1,0 +1,109 @@
+/* Main container */
+.ca-contact-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 720px;
+  margin: 2rem auto;
+  font-family: system-ui, sans-serif;
+  color: #000;
+}
+
+/* Heading and description */
+.ca-contact-form h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ca-contact-form p {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form field groups */
+.ca-form-group {
+  margin-bottom: 1.2rem;
+}
+
+.ca-input,
+.ca-textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+}
+
+.ca-input:focus,
+.ca-textarea:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.ca-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Buttons */
+.ca-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.ca-btn {
+  background: #eee;
+  border: 1px solid #ccc;
+  color: #000;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.ca-btn:hover {
+  background: #ddd;
+}
+
+.ca-btn.warn {
+  background: #f0f0f0;
+  border-color: #bbb;
+}
+
+.ca-btn.warn:hover {
+  background: #e0e0e0;
+}
+
+/* Submission message */
+.ca-form-status {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #f9f9f9;
+  color: #000;
+}
+
+/* Responsive behavior */
+@media (max-width: 600px) {
+  .ca-form-actions {
+    flex-direction: column;
+  }
+
+  .ca-form-actions .ca-btn {
+    width: 100%;
+  }
+}

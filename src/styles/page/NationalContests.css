@@ -1,0 +1,175 @@
+/* Wrapper for entire page */
+.nc-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Full background */
+.nc-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/assets/bg-overall.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+/* Main container card */
+.nc-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  max-width: 1000px;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+/* Center card wrapper */
+.nc-tab-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Tab buttons (top-level and contest types) */
+.nc-tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Button styles */
+.nc-tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: #eeeeee;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.nc-tab-btn:hover {
+  background: linear-gradient(to right, #b4f1b4, #ddf7dd);
+}
+
+.nc-tab-btn.nc-active {
+  background: #12bd0c;
+  color: white;
+}
+
+/* Tables */
+.nc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.nc-table th {
+  background-color: #12bd0c;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: 1px solid #ccc;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.nc-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+/* Hover effect for table rows */
+.nc-table tbody tr:hover {
+  background: linear-gradient(to right, #c6f6c6, #e5fbe5);
+}
+
+/* Title row inside table */
+.nc-table-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 16px;
+  background-color: #e9ffe9;
+  border-bottom: 1px solid #ccc;
+  color: #222;
+}
+
+/* Grid for contestant tiles */
+.nc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/* Each contestant card */
+.nc-card-tile {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+}
+
+.nc-card-tile:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(to right, #def8de, #f4fdf4);
+}
+
+.nc-card-name {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.nc-card-count {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Hide from screenshot/download */
+.no-print {
+  margin-top: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .nc-tab-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nc-tab-btn {
+    width: 100%;
+  }
+
+  .nc-grid {
+    grid-template-columns: 1fr;
+  }
+}
