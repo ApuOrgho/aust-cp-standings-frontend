@@ -10,7 +10,12 @@ import Register from "./pages/Register";
 import HallOfShame from "./pages/HallOfShame";
 import About from "./pages/About";
 import NationalContests from "./pages/NationalContests";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function App() {
   return (
     <div className="app-root">
