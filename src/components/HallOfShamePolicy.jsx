@@ -1,6 +1,11 @@
 // components/HallOfShamePolicy.jsx
 import React from "react";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function HallOfShamePolicy() {
   return (
     <div className="hoc-policy-message">

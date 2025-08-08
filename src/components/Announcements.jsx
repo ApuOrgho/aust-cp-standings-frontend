@@ -1,7 +1,12 @@
 import React from "react";
 import "../styles/style.css";
 import "../styles/comp/Announcements.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function Announcements() {
   return (
     <div className="announcement-box">

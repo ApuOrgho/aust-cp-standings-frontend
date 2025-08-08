@@ -2,6 +2,12 @@ import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import "../styles/style.css";
 import "../styles/comp/Footer.css";
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function Footer() {
   return (
     <footer className="footer">

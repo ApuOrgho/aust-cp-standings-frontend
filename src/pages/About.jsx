@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../styles/style.css";
 import "../styles/page/About.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function About() {
   const [activeTab, setActiveTab] = useState("mission");
 

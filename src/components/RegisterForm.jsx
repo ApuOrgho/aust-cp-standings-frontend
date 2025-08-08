@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../styles/style.css";
 import "../styles/comp/RegisterForm.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function RegisterForm() {
   const [form, setForm] = useState({
     fullName: "",

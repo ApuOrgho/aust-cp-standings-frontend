@@ -1,7 +1,12 @@
 import React, { useMemo, useState } from "react";
 import "../styles/style.css";
 import "../styles/comp/RatingsTable.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function RatingsTable({
   title,
   rows = [],

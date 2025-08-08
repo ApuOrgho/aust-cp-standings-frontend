@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { getJSON } from "../utils";
 import "../styles/comp/UpcomingContests.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 function parseDateTime(dateStr, platform) {
   if (platform === "AtCoder") {
     return new Date(dateStr);

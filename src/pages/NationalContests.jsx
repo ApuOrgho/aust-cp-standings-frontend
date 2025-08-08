@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import html2canvas from "html2canvas";
 import "../styles/page/NationalContests.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function NationalContests() {
   const [data, setData] = useState([]);
   const [activeMainTab, setActiveMainTab] = useState("contests");

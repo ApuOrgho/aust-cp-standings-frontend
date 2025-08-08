@@ -11,7 +11,12 @@ import "../styles/comp/RatingsTable.css";
 function normalizeName(n) {
   return (n || "").toString().trim().toLowerCase();
 }
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 function padAtCoderId(id) {
   const num = id.toString().padStart(3, "0");
   return num;

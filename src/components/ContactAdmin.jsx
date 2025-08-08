@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../styles/style.css";
 import "../styles/comp/ContactAdmin.css";
-
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodechefRatings,
+  parseCodeforcesRatings,
+} from "../utils";
 export default function ContactAdmin() {
   const [submitted, setSubmitted] = useState(false);
 
