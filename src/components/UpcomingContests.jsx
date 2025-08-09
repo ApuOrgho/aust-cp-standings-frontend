@@ -84,6 +84,12 @@ function calculateStartsIn(startTime, platform) {
   return result.trim() || "Less than a minute";
 }
 
+function getAtCoderContestNumber(title, type) {
+  const regex = new RegExp(`atcoder\\s+${type}\\s+contest\\s+(\\d+)`, "i");
+  const match = title.match(regex);
+  return match ? match[1] : null;
+}
+
 function generateContestLink(contest) {
   const title = contest.contestName.toLowerCase();
 
@@ -93,16 +99,21 @@ function generateContestLink(contest) {
 
   if (contest.platform === "AtCoder") {
     let type = "";
-    if (title.includes("beginner")) type = "abc";
-    else if (title.includes("regular")) type = "arc";
-    else if (title.includes("heuristic")) type = "ahc";
+    let number = null;
 
-    if (type !== "") {
-      const numberMatch = title.match(/\d+/);
-      if (numberMatch) {
-        const number = numberMatch[0];
-        return `https://atcoder.jp/contests/${type}${number}`;
-      }
+    if (/beginner/i.test(title)) {
+      type = "abc";
+      number = getAtCoderContestNumber(title, "beginner");
+    } else if (/regular/i.test(title)) {
+      type = "arc";
+      number = getAtCoderContestNumber(title, "regular");
+    } else if (/heuristic/i.test(title)) {
+      type = "ahc";
+      number = getAtCoderContestNumber(title, "heuristic");
+    }
+
+    if (type !== "" && number !== null) {
+      return `https://atcoder.jp/contests/${type}${number}`;
     }
   }
 
