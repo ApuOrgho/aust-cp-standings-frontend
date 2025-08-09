@@ -84,12 +84,6 @@ function calculateStartsIn(startTime, platform) {
   return result.trim() || "Less than a minute";
 }
 
-function getAtCoderContestNumber(title, type) {
-  const regex = new RegExp(`atcoder\\s+${type}\\s+contest\\s+(\\d+)`, "i");
-  const match = title.match(regex);
-  return match ? match[1] : null;
-}
-
 function generateContestLink(contest) {
   const title = contest.contestName.toLowerCase();
 
@@ -99,25 +93,31 @@ function generateContestLink(contest) {
 
   if (contest.platform === "AtCoder") {
     let type = "";
-    let number = null;
-
-    if (/beginner/i.test(title)) {
+    let prefix = "";
+    if (/beginner/.test(title)) {
       type = "abc";
-      number = getAtCoderContestNumber(title, "beginner");
-    } else if (/regular/i.test(title)) {
+      prefix = "beginner";
+    } else if (/regular/.test(title)) {
       type = "arc";
-      number = getAtCoderContestNumber(title, "regular");
-    } else if (/heuristic/i.test(title)) {
+      prefix = "regular";
+    } else if (/heuristic/.test(title)) {
       type = "ahc";
-      number = getAtCoderContestNumber(title, "heuristic");
+      prefix = "heuristic";
     }
 
-    if (type !== "" && number !== null) {
-      return `https://atcoder.jp/contests/${type}${number}`;
+    if (type !== "") {
+      const regex = new RegExp(
+        `atcoder\\s+${prefix}\\s+contest\\s+(\\d+)`,
+        "i"
+      );
+      const match = title.match(regex);
+      if (match && match[1]) {
+        return `https://atcoder.jp/contests/${type}${match[1]}`;
+      }
     }
   }
 
-  return contest.contestUrl || "#";
+  return null;
 }
 
 export default function UpcomingContests() {
