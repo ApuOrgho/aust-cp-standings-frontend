@@ -164,37 +164,39 @@ export default function NationalContests() {
                       </button>
                     ))}
                   </div>
-                  <table className="nc-table">
-                    <thead>
-                      <tr>
-                        <th>Serial</th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Total Teams</th>
-                        <th>Top Rank</th>
-                        <th>Details</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {getContestsByType(activeContestTab).map((c, i) => (
-                        <tr key={c.title}>
-                          <td>{i + 1}</td>
-                          <td>{c.title}</td>
-                          <td>{c.date}</td>
-                          <td>{c.totalTeams}</td>
-                          <td>{Math.min(...c.teams.map((t) => t.rank))}</td>
-                          <td>
-                            <button
-                              className="nc-tab-btn"
-                              onClick={() => openContestDetails(c)}
-                            >
-                              Details
-                            </button>
-                          </td>
+                  <div className="nc-table-wrapper">
+                    <table className="nc-table">
+                      <thead>
+                        <tr>
+                          <th>Serial</th>
+                          <th>Title</th>
+                          <th>Date</th>
+                          <th>Total Teams</th>
+                          <th>Top Rank</th>
+                          <th>Details</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {getContestsByType(activeContestTab).map((c, i) => (
+                          <tr key={c.title}>
+                            <td>{i + 1}</td>
+                            <td>{c.title}</td>
+                            <td>{c.date}</td>
+                            <td>{c.totalTeams}</td>
+                            <td>{Math.min(...c.teams.map((t) => t.rank))}</td>
+                            <td>
+                              <button
+                                className="nc-tab-btn"
+                                onClick={() => openContestDetails(c)}
+                              >
+                                Details
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </>
               )}
 
@@ -222,39 +224,41 @@ export default function NationalContests() {
               <button className="nc-tab-btn" onClick={() => setView("main")}>
                 ← Back
               </button>
-              <table className="nc-table with-header">
-                <thead>
-                  <tr>
-                    <th colSpan="5" className="nc-table-title">
-                      {selectedContest.title}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Team Name</th>
-                    <th>Solved</th>
-                    <th>Penalty</th>
-                    <th>Members</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedContestTeams.map((t, i) => (
-                    <tr key={i}>
-                      <td>{t.rank}</td>
-                      <td>{t.teamName}</td>
-                      <td>{t.totalSolved}</td>
-                      <td>{t.penalty}</td>
-                      <td>
-                        {[t.member1, t.member2, t.member3]
-                          .filter((m) => m && m.trim())
-                          .map((m, idx) => (
-                            <div key={idx}>{m}</div>
-                          ))}
-                      </td>
+              <div className="nc-table-wrapper">
+                <table className="nc-table with-header">
+                  <thead>
+                    <tr>
+                      <th colSpan="5" className="nc-table-title">
+                        {selectedContest.title}
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Team Name</th>
+                      <th>Solved</th>
+                      <th>Penalty</th>
+                      <th>Members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedContestTeams.map((t, i) => (
+                      <tr key={i}>
+                        <td>{t.rank}</td>
+                        <td>{t.teamName}</td>
+                        <td>{t.totalSolved}</td>
+                        <td>{t.penalty}</td>
+                        <td>
+                          {[t.member1, t.member2, t.member3]
+                            .filter((m) => m && m.trim())
+                            .map((m, idx) => (
+                              <div key={idx}>{m}</div>
+                            ))}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <div className="nc-tab-buttons no-print">
                 <button
                   className="nc-tab-btn"
@@ -285,34 +289,36 @@ export default function NationalContests() {
               <button className="nc-tab-btn" onClick={() => setView("main")}>
                 ← Back
               </button>
-              <table className="nc-table with-header">
-                <thead>
-                  <tr>
-                    <th colSpan="5" className="nc-table-title">
-                      National Contest Profile of{" "}
-                      {selectedContestant.toUpperCase()}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th>Serial</th>
-                    <th>Team</th>
-                    <th>Contest</th>
-                    <th>Date</th>
-                    <th>Rank</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedContestantData.map((item, idx) => (
-                    <tr key={idx}>
-                      <td>{idx + 1}</td>
-                      <td>{item.teamName}</td>
-                      <td>{item.contestTitle}</td>
-                      <td>{item.contestDate}</td>
-                      <td>{item.rank}</td>
+              <div className="nc-table-wrapper">
+                <table className="nc-table with-header">
+                  <thead>
+                    <tr>
+                      <th colSpan="5" className="nc-table-title">
+                        National Contest Profile of{" "}
+                        {selectedContestant.toUpperCase()}
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                    <tr>
+                      <th>Serial</th>
+                      <th>Team</th>
+                      <th>Contest</th>
+                      <th>Date</th>
+                      <th>Rank</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedContestantData.map((item, idx) => (
+                      <tr key={idx}>
+                        <td>{idx + 1}</td>
+                        <td>{item.teamName}</td>
+                        <td>{item.contestTitle}</td>
+                        <td>{item.contestDate}</td>
+                        <td>{item.rank}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <div className="nc-tab-buttons no-print">
                 <button
                   className="nc-tab-btn"
