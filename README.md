@@ -58,10 +58,10 @@ npm install
 touch .env
 ```
 
-Add this line to it (replace the URL with your **backend Railway URL**):
+create your backend, host it and add this line to it:
 
 ```env
-VITE_API_URL=https://your-backend-url.up.railway.app
+VITE_API_URL=https://your-backend-url.com
 ```
 
 ### 4. Run development server
