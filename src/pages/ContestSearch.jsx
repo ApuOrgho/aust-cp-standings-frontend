@@ -1,6 +1,11 @@
 // src/pages/ContestSearch.jsx
 import React, { useState } from "react";
-import { getJSON } from "../utils";
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodeforcesRatings,
+  parseCodechefRatings,
+} from "../utils";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ContestStandings from "../components/ContestStandings";
 import DownloadButton from "../components/DownloadButton";
@@ -11,12 +16,6 @@ import "../styles/comp/RatingsTable.css";
 function normalizeName(n) {
   return (n || "").toString().trim().toLowerCase();
 }
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodechefRatings,
-  parseCodeforcesRatings,
-} from "../utils";
 function padAtCoderId(id) {
   const num = id.toString().padStart(3, "0");
   return num;

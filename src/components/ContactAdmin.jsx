@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "../styles/style.css";
-import "../styles/comp/ContactAdmin.css";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
+import "../styles/style.css";
+import "../styles/comp/ContactAdmin.css";
+
 export default function ContactAdmin() {
   const [submitted, setSubmitted] = useState(false);
 

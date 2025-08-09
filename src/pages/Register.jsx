@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodeforcesRatings,
+  parseCodechefRatings,
+} from "../utils";
 import { FaUserPlus, FaInfoCircle } from "react-icons/fa";
 import RegisterForm from "../components/RegisterForm";
 import "../styles/style.css";
 import "../styles/page/Register.css";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodechefRatings,
-  parseCodeforcesRatings,
-} from "../utils";
+
 export default function Register() {
   const [activeTab, setActiveTab] = useState("instructions");
 

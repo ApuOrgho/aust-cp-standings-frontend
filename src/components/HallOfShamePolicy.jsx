@@ -3,8 +3,8 @@ import React from "react";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
 export default function HallOfShamePolicy() {
   return (

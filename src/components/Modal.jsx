@@ -1,12 +1,13 @@
 import React from "react";
-import "../styles/style.css";
-import "../styles/comp/Modal.css";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
+import "../styles/style.css";
+import "../styles/comp/Modal.css";
+
 export default function Modal({ open, onClose, children, title }) {
   if (!open) return null;
   return (

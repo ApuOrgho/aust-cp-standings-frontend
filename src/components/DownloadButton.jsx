@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import html2canvas from "html2canvas";
-import "../styles/style.css";
-import "../styles/comp/DownloadButton.css";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
+import html2canvas from "html2canvas";
+import "../styles/style.css";
+import "../styles/comp/DownloadButton.css";
+
 export default function DownloadButton({
   containerId = "atcoder-table",
   filenamePrefix = "export",

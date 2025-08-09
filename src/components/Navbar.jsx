@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodeforcesRatings,
+  parseCodechefRatings,
+} from "../utils";
 import { Link, NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import "../styles/style.css";
 import "../styles/comp/Navbar.css";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodechefRatings,
-  parseCodeforcesRatings,
-} from "../utils";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 

@@ -2,12 +2,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import "../styles/style.css";
 import "../styles/comp/ContestStandings.css";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodechefRatings,
-  parseCodeforcesRatings,
-} from "../utils";
+
 function profileUrl(platform, username) {
   if (!username) return "#";
   const user = encodeURIComponent(username);

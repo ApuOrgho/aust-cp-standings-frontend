@@ -22,7 +22,7 @@
 }
 
 .full-standings-btn:hover {
-  background: linear-gradient(90deg, #1a5ecc, #3fb3f9);
+  background: linear-gradient(90deg, #1a5ecc, #0429fc);
   color: #fff;
 }
 
@@ -30,7 +30,7 @@
   padding: 8px 14px;
   border-radius: 8px;
   font-weight: 600;
-  background: linear-gradient(90deg, #ff8a00, #ff5c7a);
+  background: linear-gradient(90deg, #6620d6, #6511ec);
   color: #fff;
   border: none;
   cursor: pointer;

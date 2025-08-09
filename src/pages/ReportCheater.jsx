@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import {
+  getJSON,
+  parseAtCoderRatings,
+  parseCodeforcesRatings,
+  parseCodechefRatings,
+} from "../utils";
 import { FaFlag, FaInfoCircle } from "react-icons/fa";
 import ReportForm from "../components/ReportForm";
 import ContactAdmin from "../components/ContactAdmin";
 import "../styles/style.css";
 import "../styles/page/ReportCheater.css";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodechefRatings,
-  parseCodeforcesRatings,
-} from "../utils";
+
 export default function ReportCheater() {
   const [activeTab, setActiveTab] = useState("instructions");
 

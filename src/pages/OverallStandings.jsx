@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
 import RatingsTable from "../components/RatingsTable";
 import DownloadButton from "../components/DownloadButton";
@@ -77,7 +77,7 @@ export default function OverallStandings() {
         setCodechefRows(parsedCC);
       } catch (err) {
         console.error("OverallStandings load error:", err);
-        setError("Failed to load ratings. Is backend running at?");
+        setError("Failed to load ratings. Is backend running?");
       } finally {
         timeoutsRef.current.forEach((t) => clearTimeout(t));
         timeoutsRef.current = [];

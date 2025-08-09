@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "../styles/style.css";
-import "../styles/comp/ReportForm.css";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
+import "../styles/style.css";
+import "../styles/comp/ReportForm.css";
+
 export default function ReportForm() {
   const [form, setForm] = useState({
     reporterName: "",

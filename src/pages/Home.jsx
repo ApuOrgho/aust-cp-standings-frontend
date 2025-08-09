@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import "../styles/style.css";
-import "../styles/page/Home.css";
-import Announcements from "../components/Announcements";
 import {
   getJSON,
   parseAtCoderRatings,
-  parseCodechefRatings,
   parseCodeforcesRatings,
+  parseCodechefRatings,
 } from "../utils";
+import "../styles/style.css";
+import "../styles/page/Home.css";
+import Announcements from "../components/Announcements";
+
 export default function Home() {
   const [showAnnouncements, setShowAnnouncements] = useState(false);
 
