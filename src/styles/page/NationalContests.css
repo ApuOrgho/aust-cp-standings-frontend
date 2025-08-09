@@ -157,7 +157,31 @@
 .no-print {
   margin-top: 20px;
 }
+.nc-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  margin-bottom: 1rem;
+}
 
+.nc-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.nc-table-wrapper th,
+.nc-table-wrapper td {
+  white-space: nowrap;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 480px) {
+  .nc-table-wrapper table {
+    min-width: 400px;
+  }
+}
 /* Responsive layout */
 @media (max-width: 600px) {
   .nc-tab-buttons {
