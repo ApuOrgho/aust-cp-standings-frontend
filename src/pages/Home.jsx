@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodeforcesRatings,
-  parseCodechefRatings,
-} from "../utils";
+import Announcements from "../components/Announcements";
 import "../styles/style.css";
 import "../styles/page/Home.css";
-import Announcements from "../components/Announcements";
 
 export default function Home() {
   const [showAnnouncements, setShowAnnouncements] = useState(false);
@@ -21,12 +15,13 @@ export default function Home() {
   };
 
   return (
-    <div className="page-wrapper">
-      <div className="page-background bg-home" />
+    <div className="hme-wrapper">
+      {/* Background */}
+      <div className="hme-background" />
 
       {/* Announcement scroll bar */}
       <div
-        className="announcement-bar"
+        className="hme-announcement-bar"
         onClick={() => setShowAnnouncements(true)}
       >
         <marquee behavior="scroll" direction="left" scrollamount="5">
@@ -34,29 +29,33 @@ export default function Home() {
         </marquee>
       </div>
 
-      {/* Main homepage content */}
-      <div className="container hero home-content">
-        <h1>AUST Contest Standings</h1>
-        <p>
-          Track AUST users' ratings and standings from <b>AtCoder</b>,{" "}
-          <b>Codeforces</b>, and <b>CodeChef</b>.
-        </p>
+      {/* Main content */}
+      <div className="hme-container">
+        <div className="hme-hero">
+          <h1 className="hme-title">AUST Contest Standings</h1>
+          <p className="hme-subtitle">
+            Monitor ratings, standings, and contest history of AUST competitors
+            across <b>AtCoder</b>, <b>Codeforces</b>, and <b>CodeChef</b>. Stay
+            updated and never miss a contest!
+          </p>
 
-        <div className="home-buttons">
-          <a href="/standings/overall" className="btn">
-            Overall Standings
-          </a>
-          <a href="/standings/contest" className="btn ghost">
-            Contest Search
-          </a>
-          <a href="/report-cheater" className="btn warn">
-            Report Cheater
-          </a>
+          <div className="hme-buttons">
+            <a href="/standings/overall" className="hme-btn primary">
+              Overall Standings
+            </a>
+            <a href="/standings/contest" className="hme-btn secondary">
+              🔍 Contest Search
+            </a>
+            <a href="/report-cheater" className="hme-btn danger">
+              Report Cheater
+            </a>
+          </div>
         </div>
       </div>
 
+      {/* Overlay announcements */}
       {showAnnouncements && (
-        <div className="overlay" onClick={handleOverlayClick}>
+        <div className="hme-overlay" onClick={handleOverlayClick}>
           <div onClick={stopPropagation}>
             <Announcements />
           </div>
