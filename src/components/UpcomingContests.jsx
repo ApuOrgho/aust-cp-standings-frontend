@@ -86,7 +86,9 @@ function calculateStartsIn(startTime, platform) {
 
 function generateContestLink(contest) {
   const title = contest.contestName.toLowerCase();
-
+  if (contest.platform === "Codechef") {
+    return contest.contestUrl;
+  }
   if (contest.platform === "Codeforces" && contest.contestId) {
     return `https://codeforces.com/contests/${contest.contestId}`;
   }
