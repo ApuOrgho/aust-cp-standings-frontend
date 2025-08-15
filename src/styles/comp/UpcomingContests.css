@@ -98,3 +98,35 @@
   padding: 20px;
   font-size: 1rem;
 }
+@media (max-width: 768px) {
+  .upc-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .upc-table th,
+  .upc-table td {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .upc-title-row {
+    font-size: 1.4rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upc-table th,
+  .upc-table td {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+
+  .upc-title-row {
+    font-size: 1.2rem;
+  }
+}
