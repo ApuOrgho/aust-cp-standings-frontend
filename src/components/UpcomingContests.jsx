@@ -49,6 +49,7 @@ function formatDuration(contest) {
     if (title.includes("beginner")) return "01:40";
     if (title.includes("regular")) return "02:30";
     if (title.includes("heuristic")) return "04:00";
+    if (title.includes("grand")) return "03:00";
   }
 
   if (contest.platform === "CodeChef") {
@@ -105,7 +106,11 @@ function generateContestLink(contest) {
     } else if (/heuristic/.test(title)) {
       type = "ahc";
       prefix = "heuristic";
+    } else if (/grand/.test(title)) {
+      type = "agc";
+      prefix = "grand";
     }
+    
 
     if (type !== "") {
       const regex = new RegExp(
