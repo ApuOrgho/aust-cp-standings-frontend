@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="small">Built for AUST students</div>
         </div>
 
-        <div className="footer-social-links">
+        <div className="navb-navbar-right">
           <a
             className="nav-link small"
             href="https://www.facebook.com/hr.ishso/"
