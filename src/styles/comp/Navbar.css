@@ -5,15 +5,15 @@
   left: 0;
   width: 100%;
   height: var(--navbar-height, 56px);
-  background: transparent;
-  border-bottom: 1px solid var(--glass-border, #333);
+  border-bottom: 1px solid var(--glass-border, #000000);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(10px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   z-index: 9999;
-  color: var(--muted, #ccc);
+  color: var(--muted, #ffffff);
+  background-color: #30606d;
   transition: background-color 0.3s ease;
 }
 
@@ -62,14 +62,14 @@
 .navb-brand-title {
   font-size: 16px;
   font-weight: 700;
-  color: #eee;
+  color: #ffffff;
 }
 
 .navb-brand-subtitle {
   font-size: 10px;
   opacity: 0.6;
   margin-top: 2px;
-  color: #ccc;
+  color: #ffffff;
 }
 
 /* Right side nav links */
@@ -88,19 +88,18 @@
 
 /* Individual nav links */
 .navb-nav-link {
-  color: #ccc;
+  color: #ffffff;
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 4px;
   font-weight: 500;
   font-size: 14px;
-  transition: color 0.18s, background 0.18s;
 }
 
 .navb-nav-link:hover,
 .navb-nav-link.active {
   color: var(--accent, #0af);
-  background-color: #c7ecec22;
+  background-color: #00000022;
   font-weight: 700;
 }
 
@@ -108,7 +107,7 @@
 .navb-menu-dots {
   display: none;
   cursor: pointer;
-  color: #eee;
+  color: #ffffff;
 }
 
 /* Spacer so page content isn't hidden under fixed navbar */
@@ -154,7 +153,7 @@
 
 /* Remove active green & underline from HallOfShame link */
 .navb-hallofshame-link.active {
-  color: #ccc !important;
+  color: #ffffff !important;
   background-color: transparent !important;
   font-weight: 500 !important;
   text-decoration: none !important;
