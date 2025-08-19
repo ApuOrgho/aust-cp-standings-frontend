@@ -13,7 +13,8 @@
   align-items: center;
   z-index: 900;
   color: var(--muted);
-  background: transparent;
+  background-color: #30606d;
+  transition: color 0.18s, background 0.18s;
 }
 .footer-inner.container {
   display: flex;
