@@ -63,7 +63,7 @@ body {
 }
 .small {
   font-size: 0.9rem;
-  color: #dbd6d6;
+  color: #ffffff;
 }
 .kv {
   display: flex;
@@ -145,7 +145,7 @@ body {
   align-items: center;
 }
 .nav-link {
-  color: #ccc;
+  color: #ffffff;
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 4px;
@@ -156,13 +156,13 @@ body {
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent);
-  background-color: rgba(30, 30, 30, 0.8);
+  background-color: #00000022;
   font-weight: 700;
 }
 .menu-dots {
   display: none;
   cursor: pointer;
-  color: #eee;
+  color: #ffffff;
 }
 .navbar-spacer {
   height: var(--navbar-height);
@@ -199,6 +199,7 @@ body {
   display: flex;
   gap: 16px;
   align-items: center;
+  background-color: #ffffff;
 }
 .footer-social-links a {
   color: var(--muted);
@@ -262,7 +263,7 @@ body {
 /* Warning Button */
 .btn.warn {
   background: linear-gradient(90deg, #ff8a00, #ff5c7a);
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -556,7 +557,7 @@ textarea {
 /* Print tweaks */
 @media print {
   body {
-    background: #fff;
+    background: #ffffff;
     color: #000;
   }
   .navbar,
@@ -566,11 +567,11 @@ textarea {
   }
   .standings-section {
     box-shadow: none;
-    background: #fff;
+    background: #ffffff;
   }
   .standings-card {
     box-shadow: none;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
   }
 }
 
