@@ -15,7 +15,8 @@ export default function Footer() {
       <div className="footer-inner container">
         <div>
           © {new Date().getFullYear()} 
-          <div className="small">Built for AUST students</div>
+          <div className="small">AUST Competitive Programming Community. All rights reserved.
+</div>
         </div>
 
         <div className="navb-navbar-right">
