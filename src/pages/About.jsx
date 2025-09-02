@@ -117,7 +117,7 @@ export default function About() {
               <h2>Contact</h2>
               <p>
                 Email:{" "}
-                <a href="mailto:apuorgho7@gmail.com">apuorgho7@gmail.com</a>
+                <a href="mailto:apuorgho7@gmail.com">aust.competitive.programming@gmail.com</a>
               </p>
             </div>
           )}
