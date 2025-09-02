@@ -33,7 +33,7 @@ export default function RegisterForm() {
     setStatus(null);
     try {
       const resp = await fetch(
-        "https://formsubmit.co/ajax/apuorgho7@gmail.com",
+        "https://formsubmit.co/ajax/aust.competitive.programming@gmail.com",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
