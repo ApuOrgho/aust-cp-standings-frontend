@@ -25,9 +25,17 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <FaFacebook size={18} /> Facebook
+            <FaFacebook size={18} /> Page
           </a>
 
+           <a
+            className="nav-link small"
+            href="https://www.facebook.com/groups/169147366481409"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaFacebook size={18} /> Group
+          </a>
 
           <a
             className="nav-link small"
