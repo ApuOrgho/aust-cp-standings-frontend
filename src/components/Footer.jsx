@@ -5,7 +5,7 @@ import {
   parseCodeforcesRatings,
   parseCodechefRatings,
 } from "../utils";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaEnvelope,FaUsers } from "react-icons/fa";
 import "../styles/style.css";
 import "../styles/comp/Footer.css";
 
@@ -27,7 +27,6 @@ export default function Footer() {
           >
             <FaFacebook size={18} /> Follow Our Page
           </a>
-
            <a
             className="nav-link small"
             href="https://www.facebook.com/groups/169147366481409"
