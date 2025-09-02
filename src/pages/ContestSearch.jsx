@@ -235,6 +235,7 @@ export default function ContestSearch() {
                       <option value="abc">AtCoder Beginner Contest</option>
                       <option value="arc">AtCoder Regular Contest</option>
                       <option value="ahc">AtCoder Heuristic Contest</option>
+                      <option value="agc">AtCoder Grand Contest</option>
                     </select>
                   </div>
                 )}
