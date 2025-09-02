@@ -19,7 +19,7 @@ export default function ContactAdmin() {
 
     try {
       const response = await fetch(
-        "https://formsubmit.co/ajax/apuorgho7@gmail.com",
+        "https://formsubmit.co/ajax/aust.competitive.programming@gmail.com",
         {
           method: "POST",
           body: formData,
@@ -77,7 +77,7 @@ export default function ContactAdmin() {
             Send Message
           </button>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=apuorgho7@gmail.com&su=General%20Inquiry"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=aust.competitive.programming@gmail.com&su=General%20Inquiry"
             target="_blank"
             rel="noopener noreferrer"
             className="btn warn"
