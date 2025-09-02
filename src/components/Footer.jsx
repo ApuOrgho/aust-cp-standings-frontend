@@ -5,7 +5,7 @@ import {
   parseCodeforcesRatings,
   parseCodechefRatings,
 } from "../utils";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub,FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import "../styles/style.css";
 import "../styles/comp/Footer.css";
 
@@ -31,12 +31,14 @@ export default function Footer() {
 
           <a
             className="nav-link small"
-            href="mailto:aust.competitive.programming@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=aust.competitive.programming@gmail.com&su=Subject%20Here&body=Hello%2C%20"
             target="_blank"
             rel="noreferrer"
           >
             <FaEnvelope size={18} /> Email
           </a>
+
+
 
         </div>
       </div>
