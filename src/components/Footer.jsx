@@ -14,8 +14,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner container">
         <div>
-          © {new Date().getFullYear()} AUST Competitive Programming
-          <div className="small">Built for AUST students</div>
+          © {new Date().getFullYear()} AUST Programming Community
+          <div className="small">Built For AUST Students</div>
         </div>
 
         <div className="navb-navbar-right">
@@ -43,7 +43,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <FaEnvelope size={18} /> Email
+            <FaEnvelope size={18} /> Email Us
           </a>
 
 
