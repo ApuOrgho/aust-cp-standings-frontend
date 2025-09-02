@@ -24,7 +24,7 @@ export default function HallOfShame() {
           >
             Rules & Warnings
           </button>
-          
+
           <button
             className={`hos-tab-btn ${activeTab === "list" ? "hos-active" : ""
               }`}
@@ -60,7 +60,7 @@ export default function HallOfShame() {
               <p>
 
               </p>
-              
+
 
               <div className="hos-section">
                 <h4>Consequences of Misconduct</h4>
@@ -75,9 +75,9 @@ export default function HallOfShame() {
 
               <div className="hos-section">
                 <p className="hoc-policy-end">
-                ⚠️ We track logs, submissions, and behaviors carefully. Once caught,
-                there's no going back.
-              </p>
+                  ⚠️ We track logs, submissions, and behaviors carefully. Once caught,
+                  there's no going back.
+                </p>
               </div>
 
             </div>
@@ -89,11 +89,13 @@ export default function HallOfShame() {
               <div className="hos-cheater-list">
                 {/* Sample entries — replace with actual dynamic data */}
                 <div className="hos-cheater-card">
+                  <p style={{ textAlign: "center" }}>
+                    Hall of Shame (0 entries). Guess we’re still in the Hall of Fame 🏆
+                  </p>
+
 
                 </div>
-                <div className="hos-cheater-card">
 
-                </div>
                 {/* Add more dynamic cards here */}
               </div>
             </div>
