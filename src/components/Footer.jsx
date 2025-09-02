@@ -14,7 +14,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner container">
         <div>
-          © {new Date().getFullYear()} AUST Programming Community
+          {/*© {new Date().getFullYear()} AUST Programming Community*/}
+          © AUST Programming Community
           <div className="small">Built For AUST Students</div>
         </div>
 
