@@ -25,7 +25,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <FaFacebook size={18} /> Page
+            <FaFacebook size={18} /> Follow Our Page
           </a>
 
            <a
@@ -34,7 +34,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <FaFacebook size={18} /> Group
+            <FaUsers size={18} /> Join Us
           </a>
 
           <a
@@ -45,9 +45,6 @@ export default function Footer() {
           >
             <FaEnvelope size={18} /> Email Us
           </a>
-
-
-
         </div>
       </div>
     </footer>
