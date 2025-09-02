@@ -24,6 +24,7 @@ export default function HallOfShame() {
           >
             Rules & Warnings
           </button>
+          
           <button
             className={`hos-tab-btn ${activeTab === "list" ? "hos-active" : ""
               }`}
@@ -67,7 +68,7 @@ export default function HallOfShame() {
                   <li><strong>Permanent bans</strong> from the entire AUST Competitive Programming Community, including all future contests, events, and activities.</li>
                   <li>Exposure on AUST Programming Group with a public announcement of the violation to the entire community.</li>
                   <li>Restriction from representing AUST in any future programming competition</li>
-                  <li>Exclusion from recommendation lists for external contests, internships, or scholarships via AUST CP network.</li>
+                  <li>Any apology after cheating will not be accepted or reduce the penalty.</li>
                   <li>Added to Hall of Shame permanently.</li>
                 </ul>
               </div>
