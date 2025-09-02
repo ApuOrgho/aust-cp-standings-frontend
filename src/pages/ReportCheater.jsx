@@ -55,7 +55,7 @@ export default function ReportCheater() {
                 <div>
                   <h2>Report a Cheater</h2>
                   <p className="rc-small">
-                    Submit a report — we’ll review it carefully.
+                    Submit a report (11 September Onwards) — we’ll review it carefully.
                   </p>
                 </div>
               </div>
@@ -84,8 +84,8 @@ export default function ReportCheater() {
               <div className="rc-instruction-section">
                 <h4>Privacy & Process</h4>
                 <p>
-                  We review reports manually.Submissions are confidential. If
-                  verification is needed, we may contact you.
+                  All reports are reviewed manually and kept strictly confidential. If verification is needed, we may reach out to you,
+                   but your identity will always remain anonymous.
                 </p>
               </div>
 

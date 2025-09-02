@@ -18,17 +18,15 @@ export default function HallOfShame() {
       <div className="container">
         <div className="hos-tab-buttons">
           <button
-            className={`hos-tab-btn ${
-              activeTab === "instructions" ? "hos-active" : ""
-            }`}
+            className={`hos-tab-btn ${activeTab === "instructions" ? "hos-active" : ""
+              }`}
             onClick={() => setActiveTab("instructions")}
           >
             Rules & Warnings
           </button>
           <button
-            className={`hos-tab-btn ${
-              activeTab === "list" ? "hos-active" : ""
-            }`}
+            className={`hos-tab-btn ${activeTab === "list" ? "hos-active" : ""
+              }`}
             onClick={() => setActiveTab("list")}
           >
             Hall of Shame
@@ -38,20 +36,12 @@ export default function HallOfShame() {
         <div className="hos-tab-content">
           {activeTab === "instructions" && (
             <div className="hos-card hos-instruction-card">
-              <h2 className="hos-title">Academic Integrity First</h2>
+              <h2 className="hos-title">Zero Tolerance for Cheating</h2>
               <p className="hos-description">
-                We maintain a public list of verified cases of cheating to
-                uphold the standards of fair competition.
+                Cheating is a serious breach of our contest policies and academic integrity standards. To uphold fair competition,
+                we maintain a public record of verified instances of cheating
               </p>
 
-              <div className="hos-section">
-                <h4>Consequences of Misconduct</h4>
-                <ul>
-                  <li>Disqualification from future contests and rankings.</li>
-                  <li>Reported to university contest admins.</li>
-                  <li>Added to Hall of Shame permanently (in most cases).</li>
-                </ul>
-              </div>
 
               <div className="hos-section">
                 <h4>Criteria for Inclusion</h4>
@@ -59,8 +49,36 @@ export default function HallOfShame() {
                   <li>Confirmed plagiarism, copying, or account sharing.</li>
                   <li>Evidence of collusion during contests.</li>
                   <li>False representation of teams or members.</li>
+                  <li>Plagiarizing code or logic from online sources.</li>
+                  <li>Using multiple accounts to manipulate rankings.</li>
+                  <li>Leaking or distributing contest problems/solutions.</li>
+                  <li>Using AI/automation in unauthorized ways.</li>
                 </ul>
               </div>
+
+              <p>
+
+              </p>
+              
+
+              <div className="hos-section">
+                <h4>Consequences of Misconduct</h4>
+                <ul>
+                  <li><strong>Permanent bans</strong> from the entire AUST Competitive Programming Community, including all future contests, events, and activities.</li>
+                  <li>Exposure on AUST Programming Group with a public announcement of the violation to the entire community.</li>
+                  <li>Restriction from representing AUST in any future programming competition</li>
+                  <li>Exclusion from recommendation lists for external contests, internships, or scholarships via AUST CP network.</li>
+                  <li>Added to Hall of Shame permanently.</li>
+                </ul>
+              </div>
+
+              <div className="hos-section">
+                <p className="hoc-policy-end">
+                ⚠️ We track logs, submissions, and behaviors carefully. Once caught,
+                there's no going back.
+              </p>
+              </div>
+
             </div>
           )}
 
@@ -70,10 +88,10 @@ export default function HallOfShame() {
               <div className="hos-cheater-list">
                 {/* Sample entries — replace with actual dynamic data */}
                 <div className="hos-cheater-card">
-                  
+
                 </div>
                 <div className="hos-cheater-card">
-                 
+
                 </div>
                 {/* Add more dynamic cards here */}
               </div>
