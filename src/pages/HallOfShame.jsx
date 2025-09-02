@@ -70,15 +70,10 @@ export default function HallOfShame() {
               <div className="hos-cheater-list">
                 {/* Sample entries — replace with actual dynamic data */}
                 <div className="hos-cheater-card">
-                  <h4>RAZA BABU</h4>
-                  <p>
-                    Reason: Code copying from another team during Y CONTEST
-                    2024.
-                  </p>
+                  
                 </div>
                 <div className="hos-cheater-card">
-                  <h4>KHAJA BABU</h4>
-                  <p>Reason: Account sharing in X CONTEST 2025.</p>
+                 
                 </div>
                 {/* Add more dynamic cards here */}
               </div>
