@@ -25,7 +25,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <FaFacebook size={18} /> Follow Our Page
+            <FaFacebook size={18} /> Visit Page
           </a>
            <a
             className="nav-link small"
