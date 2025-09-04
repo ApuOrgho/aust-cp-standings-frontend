@@ -1,17 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AUST Contest Standings</title>
-    <link rel="icon" href="/assets/favicon.ico" />
-    <meta
-      name="description"
-      content="AUST contest standings (AtCoder, Codeforces, CodeChef) — overall & contest search."
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUST CP Standings - Track Your Coding Journey</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Track ratings, standings, and contest history of AUST competitive programmers across AtCoder, Codeforces, and CodeChef platforms." />
+  <meta name="keywords" content="AUST, competitive programming, coding, standings, AtCoder, Codeforces, CodeChef, contest, programming" />
+  <meta name="author" content="AUST CP Community" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="AUST CP Standings - Track Your Coding Journey" />
+  <meta property="og:description" content="Monitor ratings, standings, and contest history of AUST competitors across multiple programming platforms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aust-cp-standings.com" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AUST CP Standings" />
+  <meta name="twitter:description" content="Track your competitive programming journey with AUST CP Standings" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Font Imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#00ff88" />
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Prevent FOUC (Flash of Unstyled Content) -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0e1a;
+      color: #ffffff;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    
+    #root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Loading animation */
+    .initial-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0e1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 255, 136, 0.2);
+      border-top-color: #00ff88;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .initial-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Initial Loading Screen -->
+  <div id="initial-loader" class="initial-loader">
+    <div class="loader-spinner"></div>
+  </div>
+  
+  <!-- Main App Container -->
+  <div id="root">
+    <noscript>
+      <div style="padding: 2rem; text-align: center; background: #ff4444; color: white; margin: 1rem; border-radius: 8px;">
+        <h2>JavaScript Required</h2>
+        <p>This application requires JavaScript to be enabled. Please enable JavaScript in your browser settings and reload the page.</p>
+      </div>
+    </noscript>
+  </div>
+  
+  <!-- Module Script -->
+  <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- Remove loading screen after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('initial-loader');
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(() => {
+          loader.remove();
+        }, 500);
+      }
+    });
+  </script>
+</body>
 </html>

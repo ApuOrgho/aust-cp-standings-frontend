@@ -1,50 +1,79 @@
 import React from "react";
+
 import {
   getJSON,
   parseAtCoderRatings,
   parseCodeforcesRatings,
   parseCodechefRatings,
 } from "../utils";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaEnvelope,FaUsers } from "react-icons/fa";
+
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaEnvelope, FaUsers } from "react-icons/fa";
+
 import "../styles/style.css";
 import "../styles/comp/Footer.css";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-inner container">
-        <div>
-          {/*© {new Date().getFullYear()} AUST Programming Community*/}
-          © AUST Programming Community
-          <div className="small">Built For AUST Students</div>
+        {/* Footer Left Content */}
+        <div className="footer-left">
+          <div className="footer-logo">
+            <FaUsers className="footer-logo-icon" />
+          </div>
+          <div className="footer-text">
+            <span>© </span>
+            <span className="footer-year">{currentYear}</span>
+            <span> Apu Das Orgho</span>
+          </div>
+          <div className="footer-divider"></div>
+          <div className="footer-description">
+            Built for AUST students
+          </div>
         </div>
 
-        <div className="navb-navbar-right">
+        {/* Footer Right - Social Links */}
+        <div className="footer-social-links">
           <a
-            className="nav-link small"
-            href="https://www.facebook.com/profile.php?id=61579667431366"
+            href="https://facebook.com"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Facebook"
+            className="footer-social-link facebook"
           >
-            <FaFacebook size={18} /> Visit Page
+            <FaFacebook className="footer-social-icon" />
+            <span>Facebook</span>
           </a>
-           <a
-            className="nav-link small"
-            href="https://www.facebook.com/groups/169147366481409"
+          
+          <a
+            href="https://github.com"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Check our GitHub"
+            className="footer-social-link github"
           >
-            <FaUsers size={18} /> Join Us
+            <FaGithub className="footer-social-icon" />
+            <span>Github</span>
+          </a>
+          
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Connect on LinkedIn"
+            className="footer-social-link linkedin"
+          >
+            <FaLinkedin className="footer-social-icon" />
+            <span>Linkedin</span>
           </a>
 
-          <a
-            className="nav-link small"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=aust.competitive.programming@gmail.com&su=Subject%20Here&body=Hello%2C%20"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaEnvelope size={18} /> Email Us
-          </a>
+          {/* Status Indicator */}
+          <div className="footer-status">
+            <div className="footer-status-dot"></div>
+            <span className="footer-status-text">Online</span>
+          </div>
         </div>
       </div>
     </footer>

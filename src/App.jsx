@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import HallOfShame from "./pages/HallOfShame";
 import About from "./pages/About";
 import NationalContests from "./pages/NationalContests";
+
 export default function App() {
   return (
     <div className="app-root">
@@ -17,13 +18,13 @@ export default function App() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/standings/overall" element={<OverallStandings />} />
-          <Route path="/standings/contest" element={<ContestSearch />} />
-          <Route path="/national-contests" element={<NationalContests />} />
+          <Route path="/overall-standings" element={<OverallStandings />} />
+          <Route path="/contest-search" element={<ContestSearch />} />
           <Route path="/report-cheater" element={<ReportCheater />} />
           <Route path="/register" element={<Register />} />
           <Route path="/hall-of-shame" element={<HallOfShame />} />
           <Route path="/about" element={<About />} />
+          <Route path="/national-contests" element={<NationalContests />} />
         </Routes>
       </main>
       <Footer />
