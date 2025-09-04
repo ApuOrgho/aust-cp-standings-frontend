@@ -1,0 +1,130 @@
+.rfm-register-form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 840px;
+  box-sizing: border-box;
+}
+
+.rfm-register-form-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.rfm-form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rfm-form-field {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfm-form-field label {
+  font-weight: 100;
+  margin-bottom: 0.4rem;
+  color: #000000;
+}
+
+.rfm-input,
+.rfm-select {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.rfm-input:focus,
+.rfm-select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.rfm-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.rfm-btn.warn {
+  background-color: #f44336;
+  color: white;
+  transition: background-color 0.3s ease;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rfm-btn.warn:hover {
+  background-color: #d32f2f;
+}
+
+.rfm-submit-btn {
+  background-color: var(--accent);
+  border: none;
+  color: #001028;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rfm-submit-btn:hover {
+  background-color: #1fc75f;
+}
+
+.rfm-status-message {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.rfm-status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.rfm-status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .rfm-form-row {
+    flex-direction: column;
+  }
+
+  .rfm-form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rfm-form-actions button {
+    width: 100%;
+  }
+}

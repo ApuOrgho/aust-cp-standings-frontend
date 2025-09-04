@@ -1,0 +1,26 @@
+.page-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  filter: saturate(0.95) contrast(0.95);
+}
+.page-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bg-overall {
+  background-image: url("/assets/bg-overall.jpg");
+}
+.standings-section {
+  background: var(--white);
+  color: var(--black);
+  padding: 30px 0 44px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+}

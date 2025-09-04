@@ -1,0 +1,42 @@
+.standings-section {
+  background: var(--white);
+  color: var(--black);
+  padding: 30px 0 44px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+}
+.center-text {
+  text-align: center;
+}
+
+.full-standings-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #2d7cff, #5ad1ff);
+  color: #001028;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.full-standings-btn:hover {
+  background: linear-gradient(90deg, #1a5ecc, #0429fc);
+  color: #fff;
+}
+
+.download-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #6620d6, #6511ec);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(90deg, #e57600, #e64a63);
+}

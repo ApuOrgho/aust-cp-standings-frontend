@@ -1,0 +1,132 @@
+/* Background and layout */
+.upc-container {
+  padding: 30px 20px;
+  text-align: center;
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Loading and error messages */
+.upc-loading,
+.upc-error {
+  font-size: 1.2rem;
+  color: black;
+  margin-top: 20px;
+}
+
+/* Table */
+.upc-table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: white;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Table header title row */
+.upc-title-row {
+  font-size: 1.8rem;
+  background-color: #25c225;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px;
+}
+
+/* Column headers */
+.upc-table th,
+.upc-table td {
+  padding: 12px 16px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+/* Column header style */
+.upc-table th {
+  background-color: #25c225;
+  color: rgb(235, 229, 229);
+  font-weight: 600;
+}
+
+/* Hover effect */
+.upc-row:hover {
+  background-color: rgba(37, 194, 37, 0.25);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Even row background */
+.upc-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Table cell text */
+.upc-td {
+  font-size: 0.95rem;
+}
+
+/* View link */
+.upc-link {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #25c225;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background-color: #25c225;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for link */
+.upc-link:hover {
+  background-color: rgba(37, 194, 37, 0.6);
+  text-decoration: none;
+}
+
+/* No data message */
+.upc-no-data {
+  text-align: center;
+  font-style: italic;
+  color: black;
+  padding: 20px;
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .upc-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .upc-table th,
+  .upc-table td {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .upc-title-row {
+    font-size: 1.4rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upc-table th,
+  .upc-table td {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+
+  .upc-title-row {
+    font-size: 1.2rem;
+  }
+}
