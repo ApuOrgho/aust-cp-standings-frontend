@@ -1,4 +1,4 @@
-/* Enhanced Home.css - Beautiful UX Design with No Underlines */
+/* Enhanced Home.css - Non-Fixed Announcement Bar */
 
 /* Main Wrapper */
 .hme-wrapper {
@@ -53,12 +53,17 @@
   animation: sparkle 20s linear infinite;
 }
 
-/* Enhanced Announcement Bar */
+.hme-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+}
+
 .hme-announcement-bar {
-  position: fixed;
-  top: calc(var(--navbar-height) + 8px);
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; /* Changed from fixed to relative */
   width: min(90%, 900px);
   background: var(--glass-primary);
   backdrop-filter: blur(20px);
@@ -66,17 +71,18 @@
   color: var(--text-primary);
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-xl);
-  z-index: 1000;
+  z-index: 10;
   cursor: pointer;
   transition: all var(--duration-normal) var(--ease-out);
   animation: slideDown 0.8s var(--ease-out) 0.3s both;
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   text-decoration: none !important;
+  margin-bottom: var(--space-xl); /* Add space below announcement bar */
 }
 
 .hme-announcement-bar:hover {
-  transform: translateX(-50%) translateY(-4px);
+  transform: translateY(-4px); /* Remove translateX since it's not centered with transform */
   box-shadow: var(--shadow-xl), var(--shadow-glow);
   text-decoration: none !important;
 }
@@ -131,16 +137,6 @@
 
 .hme-announcement-bar:hover .hme-announcement-arrow {
   transform: translateX(4px);
-}
-
-/* Container */
-.hme-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  padding: calc(var(--navbar-height) + 60px) var(--space-lg) var(--space-xl);
-  position: relative;
 }
 
 /* Hero Section */
@@ -792,11 +788,11 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-30px);
+    transform: translateY(-30px);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -841,7 +837,7 @@
 /* Enhanced Responsive Design */
 @media (max-width: 1024px) {
   .hme-container {
-    padding-top: calc(var(--navbar-height) + 55px);
+    padding-top: calc(var(--navbar-height) + var(--space-md));
   }
   
   .hme-hero {
@@ -866,13 +862,12 @@
 
 @media (max-width: 768px) {
   .hme-announcement-bar {
-    top: calc(var(--navbar-height) + 6px);
     width: 95%;
     padding: var(--space-sm) var(--space-md);
   }
   
   .hme-container {
-    padding: calc(var(--navbar-height) + 50px) var(--space-md) var(--space-lg);
+    padding: calc(var(--navbar-height) + var(--space-sm)) var(--space-md) var(--space-lg);
   }
   
   .hme-hero {
@@ -912,11 +907,10 @@
   .hme-announcement-bar {
     width: 98%;
     padding: var(--space-sm);
-    top: calc(var(--navbar-height) + 4px);
   }
   
   .hme-container {
-    padding: calc(var(--navbar-height) + 45px) var(--space-sm) var(--space-md);
+    padding: calc(var(--navbar-height) + var(--space-xs)) var(--space-sm) var(--space-md);
   }
   
   .hme-hero {

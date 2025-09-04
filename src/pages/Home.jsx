@@ -46,35 +46,35 @@ export default function Home() {
         <div className="hme-background-particles"></div>
       </div>
       
-      {/* Enhanced Announcement Bar */}
-      <div 
-        className="hme-announcement-bar"
-        onClick={() => setShowAnnouncements(true)}
-        onKeyDown={handleKeyDown}
-        role="button"
-        tabIndex={0}
-        aria-label="View latest announcements and updates"
-      >
-        <div className="hme-announcement-content">
-          <div className="hme-announcement-icon">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-          </div>
-          <span className="hme-announcement-text">
-            Latest contest updates and announcements available
-          </span>
-          <span className="hme-announcement-badge">New</span>
-          <div className="hme-announcement-arrow">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6-1.41-1.41z"/>
-            </svg>
+      {/* Main Content Container */}
+      <main className="hme-container">
+        <div 
+          className="hme-announcement-bar"
+          onClick={() => setShowAnnouncements(true)}
+          onKeyDown={handleKeyDown}
+          role="button"
+          tabIndex={0}
+          aria-label="View latest announcements and updates"
+        >
+          <div className="hme-announcement-content">
+            <div className="hme-announcement-icon">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <span className="hme-announcement-text">
+              Latest contest updates and announcements available
+            </span>
+            <span className="hme-announcement-badge">New</span>
+            <div className="hme-announcement-arrow">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6-1.41-1.41z"/>
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Hero Section */}
-      <main className="hme-container">
+        {/* Hero Section */}
         <div className="hme-hero">
           {/* Enhanced Status Badge */}
           <div className="hme-status-badge">
