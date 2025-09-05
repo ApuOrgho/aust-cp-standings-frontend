@@ -3,7 +3,8 @@ import axios from "axios";
 
 //export const BACKEND_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-export const BACKEND_BASE = import.meta.env.VITE_API_URL || "";
+export const BACKEND_BASE =
+  import.meta.env.VITE_API_URL || "https://localhost:3012";
 
 export async function getJSON(path, config = {}) {
   try {

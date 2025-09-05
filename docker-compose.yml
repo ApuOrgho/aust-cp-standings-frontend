@@ -1,9 +1,9 @@
-version: "3.8"
-
 services:
   frontend:
     build: .
     container_name: aust-cp-frontend
     ports:
-      - "3011:80"
+      - "3012:80"
     restart: always
+    environment:
+      - NODE_ENV=development
