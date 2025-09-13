@@ -1,5 +1,146 @@
-.download-wrapper {
-  display: flex;
+/* Enhanced DownloadButton.css - Phase 1 Design System */
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--text-inverse);
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  text-decoration: none !important;
+  box-shadow: var(--shadow-md), 0 0 20px rgba(var(--primary-rgb), 0.3);
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+  height: 44px;
+}
+
+.download-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s var(--ease-out);
+}
+
+.download-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.download-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 28px rgba(var(--primary-rgb), 0.5);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+
+.download-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.download-button:disabled::before {
+  display: none;
+}
+
+.download-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: downloadSpin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+.download-button svg {
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.download-button:hover:not(:disabled) svg {
+  transform: translateY(2px);
+}
+
+/* Animation */
+@keyframes downloadSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Variants */
+.download-button.secondary {
+  background: var(--glass-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.download-button.secondary:hover:not(:disabled) {
+  background: var(--glass-tertiary);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.download-button.small {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8rem;
+  min-width: 100px;
+  height: 36px;
+}
+
+.download-button.large {
+  padding: var(--space-lg) var(--space-2xl);
+  font-size: 1rem;
+  min-width: 160px;
+  height: 52px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .download-button {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.8rem;
+    min-width: 120px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-button {
+    width: 100%;
+    justify-content: center;
+    min-width: unset;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .download-button,
+  .download-button::before,
+  .download-spinner {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* No underlines */
+.download-button {
+  text-decoration: none !important;
+}
+
+.download-button:hover {
+  text-decoration: none !important;
 }

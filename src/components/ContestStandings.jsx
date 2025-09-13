@@ -57,19 +57,17 @@ export default function ContestStandings({
         <a
           href={profileUrl(linkPlatform, username)}
           target="_blank"
-          rel="noreferrer"
-          className="ratings-link"
+          rel="noopener noreferrer"
+          className="contest-standings-link"
         >
           {username || "—"}
         </a>
       );
     }
-
     // austRank formatting (render as number or dash)
     if (col.key === "austRank") {
       return val !== undefined && val !== null ? String(val) : "—";
     }
-
     return val !== undefined && val !== null ? String(val) : "—";
   }
 
@@ -77,41 +75,39 @@ export default function ContestStandings({
   const showingTo = Math.min(total, page * pageSize);
 
   return (
-    <div id={containerId} className="card standings-card">
-      <h3 className="ratings-title" style={{ textAlign: "center" }}>
-        {title}
-      </h3>
-
-      <div className="table-top-row">
-        <div className="table-meta">
-          Showing
-          <br /> {showingFrom}–{showingTo} of {total}
+    <div className="contest-standings-card" id={containerId}>
+      {title && <div className="contest-standings-title">{title}</div>}
+      
+      <div className="contest-table-top-row">
+        <div className="contest-table-meta">
+          Showing {showingFrom}–{showingTo} of {total}
         </div>
-        <div className="table-controls">
-          <label className="page-size-label">
+        <div className="contest-table-controls">
+          <label className="contest-page-size-label">
             Per page:
             <select
-              className="page-size-select"
+              className="contest-page-size-select"
               value={pageSize}
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
                 setPage(1);
               }}
             >
-              <option value={15}>15</option>
+              <option value={10}>10</option>
               <option value={20}>20</option>
               <option value={50}>50</option>
+              <option value={100}>100</option>
             </select>
           </label>
         </div>
       </div>
 
-      <div className="table-wrapper" style={{ overflowX: "auto" }}>
-        <table className="ratings-table">
+      <div className="contest-table-container">
+        <table className="contest-standings-table">
           <thead>
             <tr>
               {columns.map((col) => (
-                <th key={col.key} className="ratings-th">
+                <th key={col.key} className="contest-standings-th">
                   {col.label}
                 </th>
               ))}
@@ -120,18 +116,22 @@ export default function ContestStandings({
           <tbody>
             {pageRows.length === 0 ? (
               <tr>
-                <td colSpan={columns.length} className="ratings-empty">
-                  No users found.
+                <td colSpan={columns.length} className="contest-standings-td no-data">
+                  <div className="contest-no-data-content">
+                    <div className="contest-no-data-icon">
+                      <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>No users found.</div>
+                  </div>
                 </td>
               </tr>
             ) : (
               pageRows.map((r, idx) => (
-                <tr
-                  key={(r.handle || r.username || r.rank || idx) + "-" + idx}
-                  className="ratings-row"
-                >
+                <tr key={idx} className="contest-standings-row">
                   {columns.map((col) => (
-                    <td key={col.key + idx} className="ratings-td">
+                    <td key={col.key} className="contest-standings-td">
                       {renderCell(r, col)}
                     </td>
                   ))}
@@ -142,79 +142,61 @@ export default function ContestStandings({
         </table>
       </div>
 
-      <div className="pagination-row">
-        <div className="pagination-left">
+      <div className="contest-pagination-row">
+        <div className="contest-pagination-left">
           <button
-            className="btn ghost"
+            className="btn contest-ghost"
+            disabled={page <= 1}
             onClick={() => gotoPage(1)}
-            disabled={page === 1}
           >
             First
           </button>
           <button
-            className="btn ghost"
+            className="btn contest-ghost"
+            disabled={page <= 1}
             onClick={() => gotoPage(page - 1)}
-            disabled={page === 1}
           >
             Prev
           </button>
         </div>
 
-        <div className="pagination-pages" aria-label="Page navigation">
-          {Array.from({ length: totalPages }).map((_, i) => {
-            const p = i + 1;
-            const windowSize = 2;
-            if (
-              totalPages > 9 &&
-              !(
-                p === 1 ||
-                p === 2 ||
-                p === totalPages - 1 ||
-                p === totalPages ||
-                (p >= page - windowSize && p <= page + windowSize)
-              )
-            ) {
-              if (p === 3 && page > 5) {
-                return (
-                  <span key={`gap-${p}`} className="pagination-gap">
-                    …
-                  </span>
-                );
-              }
-              if (p === totalPages - 2 && page < totalPages - 4) {
-                return (
-                  <span key={`gap2-${p}`} className="pagination-gap">
-                    …
-                  </span>
-                );
-              }
-              return null;
+        <div className="contest-pagination-pages">
+          {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+            let pageNum;
+            if (totalPages <= 5) {
+              pageNum = i + 1;
+            } else if (page <= 3) {
+              pageNum = i + 1;
+            } else if (page >= totalPages - 2) {
+              pageNum = totalPages - 4 + i;
+            } else {
+              pageNum = page - 2 + i;
             }
+
             return (
               <button
-                key={p}
-                onClick={() => gotoPage(p)}
-                className={`pagination-page ${p === page ? "active" : ""}`}
-                aria-current={p === page ? "page" : undefined}
+                key={pageNum}
+                className={`contest-pagination-page ${page === pageNum ? 'active' : ''}`}
+                onClick={() => gotoPage(pageNum)}
               >
-                {p}
+                {pageNum}
               </button>
             );
           })}
         </div>
 
-        <div className="pagination-right">
+        <div className="contest-pagination-right">
           <button
-            className="btn ghost"
+            className="btn contest-ghost"
+            disabled={page >= totalPages}
             onClick={() => gotoPage(page + 1)}
-            disabled={page === totalPages}
           >
             Next
           </button>
           <button
-            className="btn ghost"
+            className="btn contest-ghost"
+            disabled={page >= totalPages}
             onClick={() => gotoPage(totalPages)}
-            disabled={page === totalPages}
           >
             Last
           </button>

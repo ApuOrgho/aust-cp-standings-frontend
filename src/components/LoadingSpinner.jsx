@@ -8,6 +8,20 @@ import {
 import "../styles/style.css";
 import "../styles/comp/LoadingSpinner.css";
 
-export default function LoadingSpinner() {
-  return <div className="spinner" role="status" aria-label="loading" />;
+export default function LoadingSpinner({ 
+  size = "medium", 
+  color = "primary",
+  className = "",
+  ...props 
+}) {
+  return (
+    <div 
+      className={`spinner spinner-${size} spinner-${color} ${className}`}
+      role="status"
+      aria-label="Loading"
+      {...props}
+    >
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  );
 }

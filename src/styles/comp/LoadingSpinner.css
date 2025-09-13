@@ -1,14 +1,154 @@
+/* Enhanced LoadingSpinner.css - Phase 1 Design System */
+
 .spinner {
-  width: 36px;
-  height: 36px;
   border-radius: 50%;
-  border: 4px solid rgba(0, 0, 0, 0.08);
-  border-top-color: #5ad1ff;
+  border: 4px solid var(--glass-border);
+  border-top-color: var(--primary);
   animation: spin 1s linear infinite;
   margin: auto;
+  display: inline-block;
+  position: relative;
 }
+
+.spinner::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: var(--primary-light);
+  animation: spin 2s linear infinite reverse;
+}
+
+/* Size Variants */
+.spinner-small {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+.spinner-small::after {
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+}
+
+.spinner-medium {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+.spinner-large {
+  width: 60px;
+  height: 60px;
+  border-width: 5px;
+}
+
+.spinner-large::after {
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+}
+
+/* Color Variants */
+.spinner-primary {
+  border-top-color: var(--primary);
+}
+
+.spinner-primary::after {
+  border-top-color: var(--primary-light);
+}
+
+.spinner-secondary {
+  border-top-color: var(--info);
+}
+
+.spinner-secondary::after {
+  border-top-color: var(--info);
+  opacity: 0.6;
+}
+
+.spinner-success {
+  border-top-color: var(--success);
+}
+
+.spinner-success::after {
+  border-top-color: var(--success);
+  opacity: 0.6;
+}
+
+.spinner-warning {
+  border-top-color: var(--warning);
+}
+
+.spinner-warning::after {
+  border-top-color: var(--warning);
+  opacity: 0.6;
+}
+
+.spinner-error {
+  border-top-color: var(--error);
+}
+
+.spinner-error::after {
+  border-top-color: var(--error);
+  opacity: 0.6;
+}
+
+/* Enhanced Animation */
 @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .spinner-large {
+    width: 48px;
+    height: 48px;
+    border-width: 4px;
+  }
+  
+  .spinner-large::after {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .spinner::after {
+    animation: none;
+  }
+  
+  .spinner {
+    border-top-color: var(--primary);
+    opacity: 0.7;
   }
 }
