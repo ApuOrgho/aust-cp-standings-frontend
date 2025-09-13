@@ -18,8 +18,8 @@ export default function App() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/overall-standings" element={<OverallStandings />} />
-          <Route path="/contest-search" element={<ContestSearch />} />
+          <Route path="standings/overall" element={<OverallStandings />} />
+          <Route path="standings/contest" element={<ContestSearch />} />
           <Route path="/report-cheater" element={<ReportCheater />} />
           <Route path="/register" element={<Register />} />
           <Route path="/hall-of-shame" element={<HallOfShame />} />
