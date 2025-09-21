@@ -53,6 +53,7 @@ export async function exportElementToPng(
   scale = 3
 ) {
   if (!element) return;
+  // clone to a new element to avoid problems with fixed backgrounds / overlays
   const canvas = await html2canvas(element, {
     scale,
     useCORS: true,
