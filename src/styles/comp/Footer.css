@@ -1,0 +1,202 @@
+/* =========================================
+   Footer.css — COLORFUL THEMED FOOTER
+   ========================================= */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 0;
+  height: 44px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border-top: none;
+  box-shadow: 0 -2px 8px rgba(74, 144, 226, 0.15);
+  display: flex;
+  align-items: center;
+  z-index: 9000;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #1a202c;
+  color: #ffffff;
+  border-top: none;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.footer-inner.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--page-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 8px;
+  font-size: 12px;
+  min-height: 44px;
+}
+
+.footer-subtitle {
+  font-size: 10px;
+  margin-top: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.footer-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+/* Remove underline for all link states */
+.footer-link:link,
+.footer-link:visited,
+.footer-link:hover,
+.footer-link:active,
+.footer-link:focus {
+  text-decoration: none !important;
+}
+[data-theme="dark"] .footer-link {
+  color: var(--nc-text, #e6eef7);
+}
+.footer-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none !important;
+}
+.footer-link:hover svg {
+  color: #ffffff;
+}
+[data-theme="dark"] .footer-link:hover {
+  color: var(--nc-primary, #58a6ff);
+}
+
+/* Scroll-out effect */
+.footer-hidden {
+  transform: translateY(100%);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .footer {
+    height: 40px;
+    min-height: 40px;
+    padding: 0;
+    font-size: 11px;
+  }
+  .footer-inner.container {
+    flex-direction: row;
+    gap: 2px;
+    text-align: center;
+    font-size: 9px;
+    min-height: 32px;
+    padding: 0 2px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-content {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-social-links {
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-link {
+    font-size: 9px;
+    font-weight: 500;
+    text-decoration: none !important;
+    padding: 0 2px;
+  }
+  .footer-link svg {
+    color: #ff8a00;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-subtitle {
+    color: #49a5f6;
+    font-size: 8px;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-link:link,
+  .footer-link:visited,
+  .footer-link:hover,
+  .footer-link:active,
+  .footer-link:focus {
+    text-decoration: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Light-mode mobile color fixes for better contrast (applies only when data-theme="light") */
+  [data-theme="light"] .footer {
+    background-color: #4a90e2;
+    color: #ffffff;
+  }
+
+  [data-theme="light"] .footer-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  [data-theme="light"] .footer-link {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  [data-theme="light"] .footer-link svg {
+    color: #ffffff;
+    fill: currentColor;
+  }
+
+  [data-theme="light"] .footer-link:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff !important;
+  }
+}
+
+/* Ensure dark footer colors override any broader/light rules */
+[data-theme="dark"] .footer {
+  background-color: #0f1720 !important;
+  color: #e6eef7 !important;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .footer-subtitle {
+  color: rgba(230, 238, 247, 0.9) !important;
+}
+
+[data-theme="dark"] .footer-link {
+  color: var(--nc-text, #e6eef7) !important;
+}
+
+[data-theme="dark"] .footer-link svg {
+  color: var(--nc-text, #e6eef7) !important;
+  fill: currentColor;
+}
+
+[data-theme="dark"] .footer-link:hover {
+  color: var(--nc-primary, #58a6ff) !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* END Footer.css */

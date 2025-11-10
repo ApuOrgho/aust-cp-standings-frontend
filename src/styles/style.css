@@ -1,0 +1,306 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#root {
+  min-height: 500%;
+  /* Use the page background variable so the whole scroll stays consistent */
+  background: var(--color-bg-page, #ffffff);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Theme colors - Light mode */
+  --color-primary: #0057a0;
+  --color-accent: #ff8a00;
+  --color-background: #ffffff;
+  --color-text: #333333;
+  --color-border: #e0e0e0;
+
+  /* Platform buttons */
+  --btn-success: #16a34a;
+  --btn-success-hover: #15803d;
+  --btn-success-text: #ffffff;
+
+  /* Layout */
+  --navbar-height: 60px;
+  --footer-height: 60px;
+  --container-width: 1200px;
+  --spacing-unit: 8px;
+}
+
+[data-theme="dark"] {
+  --color-primary: #2196f3;
+  --color-accent: #ff9800;
+  --color-background: #121212;
+  --color-text: #ffffff;
+  --color-border: #333333;
+
+  /* Platform buttons - darker in dark mode */
+  --btn-success: #115e35;
+  --btn-success-hover: #064e3b;
+  --btn-success-text: #e5e7eb;
+}
+
+/* Essential styles */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--spacing-unit);
+  margin-top: var(--navbar-height);
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Base styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-text);
+  transition: background-color 0.3s ease;
+}
+
+/* Theme variables */
+:root {
+  /* --- Light Mode Palette --- */
+  --color-primary: #0057a0;
+  --color-accent: #ff8a00;
+  --color-alert: #d32f2f;
+  --color-white: #ffffff;
+  --color-bg-page: #eaeaea;
+  /* Ensure light mode page background is pure white so scrolling doesn't alternate */
+  --color-bg-page: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-text: #333333;
+  --color-text-muted: #888888;
+
+  /* UI Elements */
+  --color-bg-subtle: #f7f7f7;
+  --color-bg-hover: #f1f1f1;
+  --color-border: #eeeeee;
+
+  /* --- NEW TABLE & UI VARIABLES (Light Mode) --- */
+  --color-highlight-gold-light: #fff8e1; /* 1st rank */
+  --color-highlight-silver-light: #f5f5f5; /* 2nd rank */
+  --color-highlight-bronze-light: #fbe9e7; /* 3rd rank */
+  --color-border-heavy: #cccccc; /* Thicker border */
+
+  --color-link: var(--color-primary);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --radius-sm: 4px;
+  --navbar-height: 50px;
+  --footer-height: 50px;
+
+  /* Define an inverted text color for use on primary/accent backgrounds */
+  --color-text-inverted: var(--color-white);
+
+  /* Compatibility aliases used by component-specific CSS */
+  --nc-surface: var(--color-bg-card);
+  --nc-border: var(--color-border);
+  --nc-text: var(--color-text);
+  --nc-muted: var(--color-text-muted);
+  --nc-shadow: var(--card-shadow);
+  --accent: var(--color-primary);
+  --accent-contrast: var(--color-text-inverted);
+}
+
+/* --- Dark Mode Palette --- */
+[data-theme="dark"] {
+  --color-primary: #007acc;
+  --color-accent: #00ff7f; /* BRIGHT GREEN */
+  --color-alert: #e53e3e;
+  --color-white: #ffffff;
+
+  --color-bg-page: #111217; /* Very dark page background */
+  --color-text: #e2e8f0; /* Soft white text */
+  --color-text-muted: #a0aec0;
+
+  /* --- DARK MODE CARD/TABLE CONTRAST FIX --- */
+  --color-bg-subtle-dark: #242424; /* Lighter dark color for card background */
+  --color-bg-card: var(
+    --color-bg-subtle-dark
+  ); /* Apply lighter background to card */
+
+  /* UI Elements Dark Mode */
+  --color-bg-subtle: #2a2a2a; /* Subtle shade for stripes/buttons */
+  --color-bg-hover: #333333; /* Darker hover effect */
+  --color-border: #2c2c2c; /* Dark border */
+
+  /* --- NEW TABLE & UI VARIABLES (Dark Mode) --- */
+  --color-highlight-gold-dark: #3a321a;
+  --color-highlight-silver-dark: #2a2a2a;
+  --color-highlight-bronze-dark: #3a2522;
+
+  /* Ensure the table CSS uses the correct dark vars */
+  --color-highlight-gold-light: var(--color-highlight-gold-dark);
+  --color-highlight-silver-light: var(--color-highlight-silver-dark);
+  --color-highlight-bronze-light: var(--color-highlight-bronze-dark);
+  --color-border-heavy: #3a3a3a;
+
+  --color-link: var(--color-primary);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  --color-text-inverted: var(
+    --color-text
+  ); /* Use the soft white text on dark primary/accent */
+
+  /* Compatibility aliases for dark theme */
+  --nc-surface: var(--color-bg-card);
+  --nc-border: var(--color-border);
+  --nc-text: var(--color-text);
+  --nc-muted: var(--color-text-muted);
+  --nc-shadow: var(--card-shadow);
+  /* prefer a blue accent in dark, keep existing --color-primary */
+  --accent: var(--color-primary);
+  --accent-contrast: var(--color-text-inverted);
+}
+
+/* --- Table Background Override (Ensures correct card background is used) --- */
+.ratings-table-container {
+  background-color: var(--color-bg-card);
+}
+
+/* ==================
+   GLOBAL STYLES
+   ================== */
+
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  /* Smooth color transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  /* Use the CSS variables */
+  background: var(--color-bg-page);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  -webkit-font-feature-settings: "liga" 1;
+}
+
+/* Fix for button/link focus outline */
+a,
+button {
+  text-decoration: none;
+  cursor: pointer;
+}
+a:focus,
+a:active,
+button:focus,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: var(--color-link);
+}
+
+/* Common button styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success button variant (for platform buttons) */
+.btn-success {
+  background-color: var(--btn-success);
+  color: var(--btn-success-text);
+  border: 1px solid transparent;
+}
+
+.btn-success:hover {
+  background-color: var(--btn-success-hover);
+  border-color: var(--btn-success-hover);
+}

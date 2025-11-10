@@ -1,0 +1,249 @@
+/* Register page — theme-aware, responsive, improved focus/hover */
+
+.reg-register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.reg-register-info,
+.reg-register-form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Card base uses theme variables with safe fallbacks */
+.reg-card.reg-register-card,
+.reg-card {
+  background: var(--nc-surface, #ffffff);
+  border-radius: 12px;
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.08));
+  padding: 2rem;
+  border: 1px solid var(--nc-border, rgba(0, 0, 0, 0.06));
+}
+
+/* Title & typography */
+.reg-register-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--nc-text, #0b1220);
+}
+
+.reg-register-subtitle {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--nc-text, #0b1220);
+}
+
+.bg-overall {
+  background-image: url("/assets/bg-overall.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Organization list */
+.reg-register-org-list {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  list-style: none;
+  color: var(--nc-text, #0b1220);
+}
+.reg-register-org-list li {
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs */
+.reg-input,
+.reg-select {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--nc-surface, #ffffff);
+  color: var(--nc-text, #0b1220);
+}
+
+.reg-input:focus,
+.reg-select:focus {
+  border-color: var(--accent, #2b6ef6);
+  outline: none;
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.06);
+}
+
+/* Primary submit button */
+.reg-submit-btn {
+  background-color: var(--accent, #2b6ef6);
+  border: none;
+  color: var(--accent-contrast, #ffffff);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  box-shadow: 0 10px 28px rgba(43, 110, 246, 0.08);
+}
+
+.reg-submit-btn:hover,
+.reg-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Buttons text color fallback for dark/light contrast */
+.reg-submit-btn:focus,
+.reg-btn:focus {
+  outline: 3px solid rgba(43, 110, 246, 0.12);
+  outline-offset: 2px;
+}
+
+/* Instructions specific */
+.reg-instructions-card {
+  max-width: 880px;
+}
+
+.reg-instructions-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.reg-instructions-header h2 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--accent, #2b6ef6);
+}
+
+/* Small helper text */
+.reg-small {
+  font-size: 0.95rem;
+  color: var(--nc-text, #0b1220);
+  line-height: 1.5;
+}
+
+.reg-instruction-section {
+  margin-top: 1.25rem;
+  color: var(--nc-text, #0b1220);
+  font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial;
+}
+
+/* Register list style */
+.reg-register-org-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--nc-text, #0b1220);
+}
+
+.reg-register-org-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Info buttons container */
+.reg-info-buttons {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+/* Buttons used in instructions */
+.reg-btn {
+  background-color: var(--accent, #2b6ef6);
+  border: none;
+  color: var(--accent-contrast, #ffffff);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.08);
+}
+
+/* Secondary variant fallback */
+.reg-btn.reg-info {
+  background: linear-gradient(
+    90deg,
+    var(--accent, #2b6ef6),
+    rgba(43, 110, 246, 0.9)
+  );
+  color: var(--accent-contrast, #fff);
+}
+
+/* Icon color */
+.reg-icon {
+  color: var(--accent, #2b6ef6);
+}
+
+/* Tab Buttons */
+.reg-tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.reg-tab-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  color: var(--nc-text, #0b1220);
+  transition: all 0.14s ease;
+}
+
+.reg-tab-btn.reg-active {
+  background-color: var(--accent, #2b6ef6);
+  color: var(--accent-contrast, #ffffff);
+  border-color: transparent;
+  box-shadow: 0 12px 36px rgba(43, 110, 246, 0.12);
+}
+
+/* Card default */
+.reg-card {
+  background: var(--nc-surface, #ffffff);
+  border-radius: 12px;
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.08));
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .reg-register-grid {
+    grid-template-columns: 1fr;
+  }
+  .reg-tab-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+/* Dark mode tweaks */
+[data-theme="dark"] .reg-card {
+  background: var(--nc-surface, #0b1220);
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--nc-text, #e6eef7);
+}
+
+[data-theme="dark"] .reg-input,
+[data-theme="dark"] .reg-select {
+  background: #07121a;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--nc-text, #e6eef7);
+}
+
+[data-theme="dark"] .reg-btn,
+[data-theme="dark"] .reg-submit-btn {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,207 @@
+.rc-tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.rc-tab-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  color: var(--nc-text, #0b1220);
+  transition: all 0.18s ease;
+  box-shadow: none;
+}
+
+.rc-tab-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+}
+
+.rc-tab-btn.rc-active {
+  background: linear-gradient(
+    90deg,
+    var(--accent, #2b6ef6),
+    rgba(43, 110, 246, 0.95)
+  );
+  color: var(--accent-contrast, #fff);
+  border-color: transparent;
+  box-shadow: 0 14px 40px rgba(43, 110, 246, 0.12);
+}
+
+.rc-tab-content {
+  display: block;
+}
+
+.rc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.rc-card {
+  background: var(--nc-surface, #ffffff);
+  border-radius: 12px;
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.06));
+  padding: 20px;
+  max-width: 880px;
+  width: 100%;
+  border: 1px solid var(--nc-border, #ececec);
+  color: var(--nc-text, #0b1220);
+}
+
+.rc-instructions-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.rc-flag-icon {
+  color: var(--accent, #2b6ef6);
+}
+
+.rc-instruction-section {
+  margin-top: 16px;
+  color: var(--nc-text, #0b1220);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  line-height: 1.6;
+}
+
+.rc-instruction-section ul {
+  padding-left: 20px;
+}
+
+.rc-info-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.rc-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  background: transparent;
+  color: var(--nc-text, #0b1220);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.rc-btn:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.06);
+  outline-offset: 2px;
+}
+
+.rc-btn.rc-info {
+  background: var(--accent, #2b6ef6);
+  color: var(--accent-contrast, #ffffff);
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(43, 110, 246, 0.08);
+}
+
+.rc-btn.rc-contact {
+  background: transparent;
+}
+
+.bg-report {
+  background-image: url("/assets/bg-overall.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+}
+
+.rc-form-field {
+  margin-bottom: 16px;
+}
+
+.rc-input,
+.rc-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.98rem;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  border-radius: 8px;
+  background: var(--nc-surface, #fff);
+  color: var(--nc-text, #0b1220);
+  transition: box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.rc-input:focus,
+.rc-textarea:focus {
+  outline: none;
+  border-color: var(--accent, #2b6ef6);
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.06);
+}
+
+.rc-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Small text style */
+.rc-small {
+  font-size: 0.95rem;
+  color: var(--nc-text, #0b1220);
+  line-height: 1.45;
+}
+
+.rc-blur {
+  color: var(--nc-muted, #64748b);
+  font-style: italic;
+}
+
+/* Form actions container (for buttons) */
+.rc-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Additional utility for button spacing inside the rc-info-buttons */
+.rc-info-buttons .rc-btn {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+}
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 900px) {
+  .rc-grid {
+    grid-template-columns: 1fr;
+  }
+  .rc-tab-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Dark mode tweaks if ThemeProvider sets data-theme on <html> */
+[data-theme="dark"] .rc-card {
+  background: var(--nc-surface, #0b1220);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .rc-tab-btn {
+  color: var(--nc-text, #e6eef7);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .rc-tab-btn.rc-active {
+  box-shadow: 0 14px 40px rgba(43, 110, 246, 0.18);
+}
+
+[data-theme="dark"] .rc-input,
+[data-theme="dark"] .rc-textarea {
+  background: #07121a;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--nc-text, #e6eef7);
+}

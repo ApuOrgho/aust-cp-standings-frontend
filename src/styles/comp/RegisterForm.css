@@ -1,0 +1,148 @@
+.rfm-register-form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--nc-surface, #fff);
+  border-radius: 12px;
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.08));
+  padding: 2rem;
+  width: 100%;
+  max-width: 840px;
+  box-sizing: border-box;
+  border: 1px solid var(--nc-border, #ececec);
+}
+
+.rfm-form-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent, #2b6ef6);
+  text-align: center;
+}
+
+.rfm-form-row {
+  display: flex;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rfm-form-field {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfm-form-field label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--nc-text, #0b1220);
+}
+
+.rfm-input,
+.rfm-select {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+  background: var(--nc-surface, #fff);
+  color: var(--nc-text, #0b1220);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.rfm-input:focus,
+.rfm-select:focus {
+  border-color: var(--accent, #2b6ef6);
+  outline: none;
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.06);
+}
+
+.rfm-btn.warn {
+  background-color: var(--color-alert, #ef4444);
+  color: var(--color-white, #fff);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.rfm-btn.warn:hover {
+  background-color: #d32f2f;
+}
+
+.rfm-submit-btn {
+  background-color: var(--accent, #2b6ef6);
+  border: none;
+  color: var(--accent-contrast, #fff);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.14s ease, box-shadow 0.14s ease;
+  box-shadow: 0 10px 28px rgba(43, 110, 246, 0.08);
+}
+.rfm-submit-btn:hover {
+  background-color: #1fc75f;
+  transform: translateY(-2px);
+}
+
+.rfm-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.rfm-status-message {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.rfm-status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.rfm-status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive tweaks */
+[data-theme="dark"] .rfm-register-form-section {
+  background: var(--nc-surface, #0b1220);
+  color: var(--nc-text, #e6eef7);
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.6));
+}
+[data-theme="dark"] .rfm-input,
+[data-theme="dark"] .rfm-select {
+  background: #07121a;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--nc-text, #e6eef7);
+}
+[data-theme="dark"] .rfm-btn,
+[data-theme="dark"] .rfm-submit-btn {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 600px) {
+  .rfm-form-row {
+    flex-direction: column;
+  }
+
+  .rfm-form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rfm-form-actions button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,133 @@
+:root {
+  --ca-gap: 12px;
+}
+
+.card {
+  background: var(--nc-surface, #ffffff);
+  border: 1px solid var(--nc-border, #ececec);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: var(--nc-shadow);
+}
+
+.contact-admin {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--nc-text);
+}
+
+.contact-admin h3 {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.ca-form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ca-input,
+.ca-textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--nc-surface);
+  color: var(--nc-text);
+}
+
+.ca-input:focus,
+.ca-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(43, 116, 255, 0.06);
+}
+
+.ca-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.ca-form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.ca-btn {
+  background: transparent;
+  border: 1px solid var(--nc-border, #e6e6e6);
+  color: var(--nc-text, #0b1220);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ca-btn:hover {
+  filter: brightness(0.97);
+}
+
+.ca-primary {
+  background: var(--accent, #2b6ef6);
+  color: var(--accent-contrast, #ffffff);
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.08);
+}
+
+.ca-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ca-form-status {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  border: 1px solid var(--nc-border, #ececec);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.01), transparent);
+}
+
+.ca-form-status.ok {
+  color: var(--success, #16a34a);
+}
+
+.ca-form-status.err {
+  color: var(--danger, #dc2626);
+}
+
+/* Dark mode tweaks */
+[data-theme="dark"] .card {
+  box-shadow: var(--nc-shadow, 0 8px 24px rgba(0, 0, 0, 0.6));
+}
+
+[data-theme="dark"] .ca-form-status {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .ca-primary {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .ca-input,
+[data-theme="dark"] .ca-textarea {
+  background: #07121a;
+  border-color: #22303f;
+  color: var(--nc-text);
+}
+
+@media (max-width: 720px) {
+  .ca-form-actions {
+    flex-direction: column-reverse;
+  }
+  .ca-form-actions .ca-btn {
+    width: 100%;
+  }
+}

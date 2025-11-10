@@ -1,0 +1,147 @@
+:root {
+  --rf-gap: 12px;
+}
+
+.rf-report-form {
+  max-width: 820px;
+  margin: 0 auto;
+  color: var(--nc-text);
+  font-family: system-ui, sans-serif;
+}
+
+.rf-form-title {
+  text-align: center;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.rf-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.rf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.rf-form-group label {
+  color: var(--nc-text);
+}
+
+.rf-full {
+  grid-column: 1 / -1;
+}
+
+.rf-input,
+.rf-select,
+.rf-textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--nc-border);
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--nc-surface);
+  color: var(--nc-text);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.rf-input::placeholder,
+.rf-textarea::placeholder {
+  color: var(--nc-muted);
+}
+
+.rf-input:focus,
+.rf-textarea:focus,
+.rf-select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 6px 18px rgba(43, 116, 255, 0.06);
+}
+
+.rf-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.rf-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.rf-btn {
+  background-color: var(--accent);
+  border: none;
+  color: var(--accent-contrast);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(43, 110, 246, 0.08);
+}
+
+.rf-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+.rf-btn.warn {
+  background-color: var(--color-alert, #ef4444);
+  color: var(--color-white, #ffffff);
+}
+
+.rf-form-status {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.rf-form-status.success {
+  color: var(--success, #16a34a);
+}
+
+.rf-form-status.error {
+  color: var(--danger, #dc2626);
+}
+
+/* Disabled button state */
+.rf-btn:disabled {
+  background-color: var(--nc-border);
+  cursor: not-allowed;
+  color: var(--nc-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 820px) {
+  .rf-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .rf-form-actions {
+    flex-direction: column;
+  }
+  .rf-btn {
+    width: 100%;
+  }
+}
+
+/* Dark mode tweaks */
+[data-theme="dark"] .rf-input,
+[data-theme="dark"] .rf-textarea,
+[data-theme="dark"] .rf-select {
+  background: #07121a;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--nc-text, #e6eef7);
+}
+
+[data-theme="dark"] .rf-report-form {
+  color: var(--nc-text, #e6eef7);
+}
+
+[data-theme="dark"] .rf-btn {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.48);
+}

@@ -1,0 +1,259 @@
+/* Container */
+.aust-cp-ratings-table-container {
+  width: 100%;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Title section */
+.aust-cp-ratings-table-title-wrapper {
+  text-align: center;
+  padding: 20px 0 10px 0;
+}
+.aust-cp-ratings-table-main-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+.aust-cp-ratings-table-subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* Table */
+.aust-cp-ratings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: auto;
+}
+
+/* Header */
+.aust-cp-ratings-th {
+  text-align: center;
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--color-border-heavy);
+  font-weight: 700;
+  background: var(--color-bg-subtle);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+[data-theme="dark"] .aust-cp-ratings-th {
+  color: #e0e0e0;
+  background: #1e1e1e;
+  border-bottom-color: #333;
+}
+
+/* Cells */
+.aust-cp-ratings-td {
+  text-align: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+[data-theme="dark"] .aust-cp-ratings-td {
+  color: #e0e0e0;
+  border-bottom-color: #333;
+}
+
+/* Zebra rows & Hover & Link */
+.aust-cp-ratings-table tbody .aust-cp-ratings-row:nth-child(odd) {
+  background: var(--color-bg-card);
+}
+.aust-cp-ratings-table tbody .aust-cp-ratings-row:nth-child(even) {
+  background: #fafafa;
+}
+[data-theme="dark"]
+  .aust-cp-ratings-table
+  tbody
+  .aust-cp-ratings-row:nth-child(odd) {
+  background: #181818;
+}
+[data-theme="dark"]
+  .aust-cp-ratings-table
+  tbody
+  .aust-cp-ratings-row:nth-child(even) {
+  background: #222;
+}
+.aust-cp-ratings-row:hover {
+  background: #f5f5f5;
+}
+[data-theme="dark"] .aust-cp-ratings-row:hover {
+  background: #2a2a2a;
+}
+.aust-cp-ratings-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+[data-theme="dark"] .aust-cp-ratings-link {
+  color: #7aa2f7;
+}
+
+/* Top row (Global) */
+.aust-cp-table-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 10px 15px;
+  flex-wrap: wrap;
+  position: relative; /* Needed for centering .pagination-pages */
+}
+.aust-cp-table-meta,
+.aust-cp-page-size-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.aust-cp-page-size-select {
+  margin-left: 5px;
+  border-radius: 6px;
+  padding: 3px 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+}
+
+/* Pagination (Global) */
+.aust-cp-pagination-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  position: relative; /* Critical for absolute centering of page numbers */
+}
+.aust-cp-pagination-left,
+.aust-cp-pagination-right,
+.aust-cp-pagination-pages {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* 📱 FINAL Mobile Fixes (max-width: 768px) 📱 */
+@media (max-width: 768px) {
+  .aust-cp-ratings-table-main-title {
+    font-size: 20px;
+  }
+
+  /* Table layout fixes */
+  .aust-cp-ratings-table {
+    font-size: 11px;
+    table-layout: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .aust-cp-ratings-th,
+  .aust-cp-ratings-td {
+    padding: 4px 1px;
+    font-size: 11px;
+    min-width: 0 !important;
+    width: auto !important;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* Header Wrapping Rules */
+  .aust-cp-ratings-th {
+    white-space: normal !important;
+  }
+  .aust-cp-handle-col.aust-cp-ratings-th,
+  .aust-cp-rating-col.aust-cp-ratings-th {
+    white-space: nowrap !important;
+  }
+
+  /* Column Sizing for Content */
+  .aust-cp-rank-col,
+  .aust-cp-rating-col {
+    width: 1% !important;
+    white-space: nowrap !important;
+  }
+  .aust-cp-handle-col {
+    width: auto !important;
+    white-space: normal !important;
+  }
+
+  /* FIX: Per page visibility and Showing text alignment */
+  .aust-cp-table-top-row {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* Center the "Showing" text block */
+  .aust-cp-table-meta {
+    text-align: center;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  /* FIX for Per Page button visibility */
+  .aust-cp-table-controls {
+    margin-left: auto !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .aust-cp-page-size-label {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  /* 🔑 CRITICAL FIX: Pagination alignment and layout (To match the desired wide layout) */
+  .aust-cp-pagination-row {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 0;
+  }
+
+  .aust-cp-pagination-left,
+  .aust-cp-pagination-right,
+  .aust-cp-pagination-pages {
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .aust-cp-pagination-left {
+    margin-right: auto;
+  }
+
+  .aust-cp-pagination-right {
+    margin-left: auto;
+  }
+
+  .aust-cp-pagination-pages {
+    /* Absolute positioning is the most reliable way to center content horizontally */
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 70%;
+  }
+
+  /* Clean up */
+  .aust-cp-ratings-table-container {
+    overflow: visible !important;
+  }
+  .table-scroll-wrapper,
+  .table-inner-wrapper {
+    width: 100% !important;
+    overflow-x: visible !important;
+    display: block !important;
+  }
+}

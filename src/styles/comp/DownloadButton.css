@@ -1,0 +1,72 @@
+/* DownloadButton.css - Final Clean Version with Icon Support */
+
+/* --- Base Button Style --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Added more horizontal padding for better visual balance with the icon */
+  padding: 8px 18px;
+  border-radius: var(--radius-sm, 4px);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  user-select: none;
+  border: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Ghost Button Style (Modern, Primary Themed) --- */
+.btn-primary-ghost {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-primary-ghost:hover:not([disabled]) {
+  background-color: var(--color-primary);
+  /* Text color changes to white/inverted background color on hover */
+  color: var(--color-bg-card);
+}
+
+/* Dark Mode Overrides for Ghost Button */
+[data-theme="dark"] .btn-primary-ghost {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+[data-theme="dark"] .btn-primary-ghost:hover:not([disabled]) {
+  background-color: var(--color-accent);
+  /* Corrected color for high contrast in dark mode */
+  color: var(--color-text-inverted, #ffffff);
+}
+
+/* --- Download Button Specific Style --- */
+.download-btn {
+  /* Inherits styling from .btn and .btn-primary-ghost */
+}
+
+/* Icon styling adjustments */
+.download-btn svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px; /* Space between icon and text */
+}
+
+/* Ensure icon color changes correctly on hover */
+.btn-primary-ghost:hover:not([disabled]) svg {
+  stroke: var(--color-bg-card); /* Changes icon color on hover for light mode */
+}
+
+[data-theme="dark"] .btn-primary-ghost:hover:not([disabled]) svg {
+  stroke: var(
+    --color-text-inverted,
+    #ffffff
+  ); /* Changes icon color on hover for dark mode */
+}

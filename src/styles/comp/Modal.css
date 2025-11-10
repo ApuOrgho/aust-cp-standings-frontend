@@ -1,0 +1,58 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 1000;
+
+  .modal {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: var(--color-text);
+  }
+
+  .modal-content {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-height: 60vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  @media (max-width: 600px) {
+    .modal {
+      max-width: 98vw;
+      padding: 10px;
+    }
+    .modal-content {
+      max-height: 70vh;
+      font-size: 0.97rem;
+      padding: 2px;
+    }
+  }
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .modal {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}

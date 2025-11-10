@@ -1,0 +1,53 @@
+/* src/styles/comp/ThemeToggle.css */
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 87, 160, 0.15);
+  transition: background 0.22s cubic-bezier(.7,.3,.31,1.13), color 0.22s, transform 0.18s;
+  font-size: 22px;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+.theme-toggle-btn:focus {
+  outline: 2.5px solid #fcca36;
+  outline-offset: 2.5px;
+}
+.theme-toggle-btn:hover {
+  transform: scale(1.1) rotate(-8deg);
+  filter: brightness(1.05) drop-shadow(0 2px 7px #008fff11);
+  background-color: #003d6a;
+  color: #ffd180;
+}
+[data-theme="dark"] .theme-toggle-btn {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: 2px solid #fff7;
+  box-shadow: 0 2px 12px rgba(255, 138, 0, 0.18);
+}
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background-color: #ff9900;
+  color: #181f2a;
+  filter: brightness(1.04) drop-shadow(0 2px 11px #ff980044);
+}
+
+/* Make icon in the button bigger and well-aligned */
+.theme-toggle-btn svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+/* Mobile menu adjustment */
+.navb-mobile-toggle .theme-toggle-btn {
+  margin: 0 auto;
+}

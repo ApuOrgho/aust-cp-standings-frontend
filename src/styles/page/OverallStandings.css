@@ -1,0 +1,222 @@
+/* --- Page Wrapper (Unique Style) --- */
+.aust-cp-os-page-wrapper {
+  padding: 30px 15px;
+  min-height: calc(100vh - var(--navbar-height, 50px));
+}
+
+/* --- Container (Unique Style) --- */
+.aust-cp-os-container {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- Standings Card (Unique Style) --- */
+.aust-cp-os-card {
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  margin: 0 auto !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* --- Header Styles (Unique Styles) --- */
+.aust-cp-os-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.aust-cp-os-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+[data-theme="dark"] .aust-cp-os-title {
+  color: var(--color-accent);
+}
+
+.aust-cp-os-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Platform Tabs (Unique Styles) --- */
+.aust-cp-os-platform-tabs-wrapper {
+  text-align: center;
+}
+
+.aust-cp-os-platform-tabs {
+  display: inline-flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 30px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border-heavy);
+}
+
+.aust-cp-os-platform-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  border: none;
+  background: var(--color-bg-card);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  transition: all 0.2s;
+  border-right: 1px solid var(--color-border-heavy);
+}
+
+.aust-cp-os-platform-tab:last-child {
+  border-right: none;
+}
+
+.aust-cp-os-platform-tab:not(.active):hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+.aust-cp-os-platform-tab.active {
+  background: var(--color-primary);
+  color: var(--color-text-inverted);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .aust-cp-os-platform-tab.active {
+  background: var(--color-accent);
+  color: var(--color-text-inverted);
+  border-color: var(--color-accent);
+}
+
+/* --- Loading & Error Boxes (Unique Styles) --- */
+.aust-cp-os-loading-box,
+.aust-cp-os-error-box {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: var(--radius);
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.aust-cp-os-loading-message {
+  margin-top: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.aust-cp-os-error-box {
+  color: var(--color-alert);
+  border: 1px solid var(--color-alert);
+}
+
+/* --- Table Wrapper and Actions (Unique Styles) --- */
+.aust-cp-os-table-wrapper {
+  margin-top: 20px;
+}
+
+.aust-cp-os-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+  padding: 0 12px;
+}
+
+.aust-cp-os-ratings-table-platform-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--color-text);
+  margin: 0;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+/* 🔑 CSS for the Fixed Footer Hiding (Apply this to your actual fixed footer class) */
+.fixed-mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* Smooth transition for showing/hiding */
+  transition: transform 0.3s ease-in-out;
+}
+
+.fixed-mobile-nav.hidden {
+  /* Hides the element by moving it off the screen */
+  transform: translateY(100%);
+}
+
+/* 📱 Mobile Adjustments (max-width: 768px/600px) 📱 */
+@media (max-width: 768px) {
+  .aust-cp-os-page-wrapper {
+    padding: 0 0 60px 0 !important;
+    min-height: auto;
+  }
+
+  .aust-cp-os-container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .aust-cp-os-card {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Internal Card Padding */
+  .aust-cp-os-header,
+  .aust-cp-os-platform-tabs-wrapper,
+  .aust-cp-os-table-wrapper,
+  .aust-cp-os-loading-box,
+  .aust-cp-os-error-box {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Full-width tabs on mobile */
+  .aust-cp-os-platform-tabs {
+    width: 100%;
+    display: flex;
+  }
+  .aust-cp-os-platform-tab {
+    flex-grow: 1;
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+
+  .aust-cp-os-title {
+    font-size: 2rem;
+  }
+
+  .aust-cp-os-actions {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aust-cp-os-header,
+  .aust-cp-os-platform-tabs-wrapper,
+  .aust-cp-os-table-wrapper,
+  .aust-cp-os-loading-box,
+  .aust-cp-os-error-box {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .aust-cp-os-actions {
+    padding: 0 5px;
+  }
+}

@@ -1,0 +1,182 @@
+/* New features styles for HallOfShamePolicy */
+.hoc-policy-stats {
+  margin: 1rem 0 1rem 0;
+  background: var(--nc-surface, transparent);
+  border-radius: 8px;
+  padding: 0.6rem 0.3rem;
+  color: var(--nc-text, var(--color-text));
+  font-size: 0.98rem;
+}
+.hoc-policy-stats h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.hoc-policy-funfact {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--nc-muted, var(--color-text-muted));
+}
+.hoc-policy-actions {
+  margin: 1rem 0;
+  text-align: center;
+}
+.hoc-policy-report-btn {
+  display: inline-block;
+  background: var(--color-primary, var(--accent));
+  color: var(--color-text-inverted, #fff);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.18s, transform 0.12s;
+}
+.hoc-policy-report-btn:hover {
+  transform: translateY(-2px);
+}
+.hoc-policy-qa {
+  margin: 1rem 0 0 0;
+  background: transparent;
+  border-radius: 8px;
+  padding: 0.6rem 0;
+}
+.hoc-policy-qa h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.hoc-policy-qa-input {
+  font-size: 1rem;
+  border: 1px solid var(--nc-border, #ccc);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .hoc-policy-stats,
+  .hoc-policy-qa {
+    padding: 0.7rem;
+  }
+}
+
+/* Dark mode support for new features */
+[data-theme="dark"] .hoc-policy-stats {
+  background: var(--nc-surface, #222c3a);
+  color: var(--accent, #2b6ef6);
+}
+[data-theme="dark"] .hoc-policy-funfact {
+  color: var(--accent, #12bd0c);
+}
+[data-theme="dark"] .hoc-policy-actions {
+  /* no change needed */
+}
+[data-theme="dark"] .hoc-policy-report-btn {
+  background: var(--accent, #2b6ef6);
+  color: var(--accent-contrast, #fff);
+}
+[data-theme="dark"] .hoc-policy-report-btn:hover {
+  background: #1a4bb8;
+}
+[data-theme="dark"] .hoc-policy-qa {
+  background: var(--nc-surface, #222c3a);
+}
+[data-theme="dark"] .hoc-policy-qa-input {
+  border: 1px solid var(--nc-border, #444);
+  background: var(--nc-surface, #181f2a);
+  color: var(--nc-text, #e6eef7);
+}
+/* HallOfShamePolicy Modern Styles */
+.hoc-policy-message {
+  background: var(--nc-surface, #fff);
+  border: 1px solid var(--nc-border, #e3e3e3);
+  border-radius: 14px;
+  box-shadow: var(--nc-shadow, 0 2px 12px rgba(0, 0, 0, 0.08));
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto 1.2rem auto;
+  color: var(--nc-text, #0b1220);
+}
+.hoc-policy-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-primary, var(--accent));
+  text-align: center;
+}
+.hoc-policy-toggle {
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  padding: 0.5rem 1.2rem;
+  background: var(--accent, #12bd0c);
+  color: var(--accent-contrast, #fff);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.18s;
+}
+.hoc-policy-toggle:focus {
+  outline: 2px solid var(--accent, #12bd0c);
+  outline-offset: 2px;
+}
+.hoc-policy-intro {
+  font-size: 1.08rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.hoc-policy-list {
+  margin: 0.5rem 0 1rem 1.2rem;
+  padding: 0;
+}
+.hoc-policy-list li {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+.hoc-policy-consequences {
+  margin: 1.2rem 0 1.2rem 0;
+  background: var(--accent-bg, #f8f8f8);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--accent, #d32f2f);
+  font-size: 1rem;
+}
+.hoc-policy-badge {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+.hoc-policy-end {
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  color: var(--nc-text, #0b1220);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .hoc-policy-message {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .hoc-policy-message {
+  background: var(--nc-surface, #181f2a);
+  color: var(--nc-text, #e6eef7);
+  box-shadow: var(--nc-shadow, 0 2px 16px rgba(0, 0, 0, 0.4));
+  border: 1px solid var(--nc-border, #222c3a);
+}
+[data-theme="dark"] .hoc-policy-title {
+  color: var(--accent, #ff5252);
+}
+[data-theme="dark"] .hoc-policy-consequences {
+  background: var(--accent-bg, #1a3d1a);
+  color: var(--accent, #ff5252);
+}
+[data-theme="dark"] .hoc-policy-end {
+  color: var(--nc-text, #e6eef7);
+}
