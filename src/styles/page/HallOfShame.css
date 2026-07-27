@@ -17,44 +17,58 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1;
+  filter: saturate(0.9) brightness(0.9);
 }
 
-/* Tab button container */
+/* Tab button container (shared segmented-tab pattern) */
 .hos-tab-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 0;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Tab buttons */
 .hos-tab-btn {
   padding: 10px 20px;
   border: none;
-  background: #eeeeee;
-  border-radius: 6px;
+  background: var(--color-bg-card);
+  color: var(--color-text-muted);
   cursor: pointer;
   font-weight: 600;
-  color: black;
-  transition: background 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hos-tab-btn:hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
 }
 
 .hos-tab-btn.hos-active {
-  background: #12bd0c;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-text-inverted);
+}
+
+[data-theme="dark"] .hos-tab-btn.hos-active {
+  background: var(--color-accent);
 }
 
 /* Main card content area */
 .hos-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
   padding: 24px;
   max-width: 880px;
   width: 100%;
-  color: black;
 }
 
 /* Center tab content */
@@ -71,6 +85,11 @@
 
 .hos-section h4 {
   margin-bottom: 8px;
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .hos-section h4 {
+  color: var(--color-accent);
 }
 
 /* Title & description */
@@ -79,12 +98,17 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .hos-title {
+  color: var(--color-accent);
 }
 
 .hos-description {
   text-align: center;
   font-size: 1rem;
-  color: #444;
+  color: var(--color-text-muted);
 }
 
 /* List of cheaters */
@@ -96,32 +120,32 @@
 }
 
 .hos-cheater-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   padding: 14px;
-  background: #ffffff;
+  background: var(--color-bg-subtle);
   transition: background-color 0.2s ease;
   cursor: default;
 }
 
 .hos-cheater-card:hover {
-  background-color: #d4f5d8;
+  background-color: var(--color-bg-hover);
 }
 
 .hos-cheater-card h4 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--color-text);
 }
 
 /* Responsive tweaks */
 @media (max-width: 600px) {
   .hos-tab-buttons {
-    flex-direction: column;
-    align-items: center;
+    max-width: 100%;
   }
 
   .hos-tab-btn {
-    width: 100%;
+    flex: 1;
   }
 }

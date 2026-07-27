@@ -180,16 +180,16 @@ export default function ContestSearch() {
       <div className="page-background bg-contest" />
       <div className="container">
         {/* Buttons to toggle views */}
-        <div className="nc-tab-btn-container">
+        <div className="cs-tab-btn-container seg-tabs">
           <button
-            className={`nc-tab-btn ${!showUpcoming ? "nc-active" : ""}`}
+            className={`cs-tab-btn seg-tab ${!showUpcoming ? "active" : ""}`}
             onClick={() => setShowUpcoming(false)}
             type="button"
           >
             Search Standings
           </button>
           <button
-            className={`nc-tab-btn ${showUpcoming ? "nc-active" : ""}`}
+            className={`cs-tab-btn seg-tab ${showUpcoming ? "active" : ""}`}
             onClick={() => setShowUpcoming(true)}
             type="button"
           >
@@ -316,7 +316,12 @@ export default function ContestSearch() {
                       <div style={{ fontSize: "1.5em", fontWeight: "bold" }}>
                         {title}
                       </div>
-                      <div style={{ fontSize: "0.9em", color: "#666" }}>
+                      <div
+                        style={{
+                          fontSize: "0.9em",
+                          color: "var(--color-text-muted)",
+                        }}
+                      >
                         Ahsanullah University of Science and Technology
                       </div>
                     </div>

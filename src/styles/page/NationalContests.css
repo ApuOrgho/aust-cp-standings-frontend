@@ -21,18 +21,18 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1;
+  filter: saturate(0.9) brightness(0.9);
 }
 
 /* Main container card */
 .nc-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
   padding: 24px;
   max-width: 1000px;
   width: 100%;
-  color: black;
   text-align: center;
 }
 
@@ -47,34 +47,47 @@
 .nc-tab-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-/* Button styles */
+/* Button styles — doubles as both a tab-toggle and a plain action button
+   (Back / Details / Full Standings / Download), so it keeps a neutral default
+   look and only gets the primary treatment when it's the active tab. */
 .nc-tab-btn {
   padding: 10px 20px;
-  border: none;
-  background: #eeeeee;
-  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  border-radius: var(--radius);
   cursor: pointer;
   font-weight: 600;
-  color: black;
-  transition: background 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   text-align: center;
 }
 
 .nc-tab-btn:hover {
-  background: linear-gradient(to right, #b4f1b4, #ddf7dd);
+  background: var(--color-bg-hover);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .nc-tab-btn:hover {
+  border-color: var(--color-accent);
 }
 
 .nc-tab-btn.nc-active {
-  background: #12bd0c;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-text-inverted);
+  border-color: var(--color-primary);
 }
 
-/* Tables */
+[data-theme="dark"] .nc-tab-btn.nc-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Tables — matches the .ratings-table treatment used on the standings pages */
 .nc-table {
   width: 100%;
   border-collapse: collapse;
@@ -83,25 +96,33 @@
 }
 
 .nc-table th {
-  background-color: #12bd0c;
-  color: white;
-  font-weight: bold;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-primary);
+  font-weight: 700;
   padding: 12px;
-  border: 1px solid #ccc;
-  transition: background 0.3s ease;
-  text-align: center;
+  border: 1px solid var(--color-border);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="dark"] .nc-table th {
+  color: #e0e0e0;
+  background: #252525;
+  border-color: #444444;
 }
 
 .nc-table td {
   padding: 12px;
-  border: 1px solid #ccc;
-  transition: background 0.2s ease;
-  text-align: center;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: background-color 0.2s ease;
 }
 
 /* Hover effect for table rows */
 .nc-table tbody tr:hover {
-  background: linear-gradient(to right, #c6f6c6, #e5fbe5);
+  background: var(--color-bg-hover);
 }
 
 /* Title row inside table */
@@ -110,9 +131,13 @@
   font-size: 1.2rem;
   font-weight: bold;
   padding: 16px;
-  background-color: #e9ffe9;
-  border-bottom: 1px solid #ccc;
-  color: #222;
+  background-color: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .nc-table-title {
+  color: var(--color-accent);
 }
 
 /* Grid for contestant tiles */
@@ -126,12 +151,14 @@
 
 /* Each contestant card */
 .nc-card-tile {
-  background: white;
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
   padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  box-shadow: none;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   text-align: center;
   width: 100%;
   max-width: 280px;
@@ -139,18 +166,24 @@
 
 .nc-card-tile:hover {
   transform: translateY(-4px);
-  background: linear-gradient(to right, #def8de, #f4fdf4);
+  box-shadow: var(--card-shadow);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .nc-card-tile:hover {
+  border-color: var(--color-accent);
 }
 
 .nc-card-name {
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 600;
   margin-bottom: 6px;
+  color: var(--color-text);
 }
 
 .nc-card-count {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--color-text-muted);
 }
 
 /* Hide from screenshot/download */

@@ -11,10 +11,15 @@
 }
 
 /* Loading and error messages */
-.upc-loading,
+.upc-loading {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  margin-top: 20px;
+}
+
 .upc-error {
   font-size: 1.2rem;
-  color: black;
+  color: var(--color-alert);
   margin-top: 20px;
 }
 
@@ -23,21 +28,25 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--color-bg-card);
   border-collapse: collapse;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-shadow);
 }
 
 /* Table header title row */
 .upc-title-row {
   font-size: 1.8rem;
-  background-color: #25c225;
-  color: black;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-primary);
   font-weight: bold;
   text-align: center;
   padding: 14px;
+}
+
+[data-theme="dark"] .upc-title-row {
+  color: var(--color-accent);
 }
 
 /* Column headers */
@@ -45,26 +54,35 @@
 .upc-table td {
   padding: 12px 16px;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Column header style */
 .upc-table th {
-  background-color: #25c225;
-  color: rgb(235, 229, 229);
-  font-weight: 600;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+}
+
+[data-theme="dark"] .upc-table th {
+  color: #e0e0e0;
+  background: #252525;
 }
 
 /* Hover effect */
 .upc-row:hover {
-  background-color: rgba(37, 194, 37, 0.25);
+  background-color: var(--color-bg-hover);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 /* Even row background */
 .upc-row:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-subtle);
 }
 
 /* Table cell text */
@@ -74,27 +92,38 @@
 
 /* View link */
 .upc-link {
-  color: black;
+  color: var(--color-primary);
   text-decoration: none;
-  font-weight: 500;
-  border: 1px solid #25c225;
+  font-weight: 600;
+  border: 1px solid var(--color-primary);
   padding: 4px 12px;
-  border-radius: 6px;
-  background-color: #25c225;
-  transition: background-color 0.3s ease;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="dark"] .upc-link {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 /* Hover effect for link */
 .upc-link:hover {
-  background-color: rgba(37, 194, 37, 0.6);
+  background-color: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
+}
+
+[data-theme="dark"] .upc-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverted);
 }
 
 /* No data message */
 .upc-no-data {
   text-align: center;
   font-style: italic;
-  color: black;
+  color: var(--color-text-muted);
   padding: 20px;
   font-size: 1rem;
 }

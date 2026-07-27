@@ -1,7 +1,7 @@
 .rf-report-form {
   max-width: 720px;
   margin: 0 auto;
-  color: #001028;
+  color: var(--color-text);
   font-style: normal;
   font-family: system-ui, sans-serif;
 }
@@ -10,44 +10,43 @@
   margin-bottom: 16px;
   font-weight: 600;
   font-family: system-ui, sans-serif;
-  color: #000000;
+  color: var(--color-text);
 }
 
 .rf-input,
 .rf-select,
 .rf-textarea {
   padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
-  background-color: white;
-  transition: border-color 0.2s ease;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
   margin-bottom: 0.6rem;
 }
 
 .rf-input:focus,
 .rf-textarea:focus,
 .rf-select:focus {
-  border-color: var(--accent);
+  border-color: var(--color-primary);
   outline: none;
+}
+
+[data-theme="dark"] .rf-input:focus,
+[data-theme="dark"] .rf-textarea:focus,
+[data-theme="dark"] .rf-select:focus {
+  border-color: var(--color-accent);
 }
 
 .rf-textarea {
   min-height: 120px;
   resize: vertical;
 }
-.rfm-input {
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #15971c;
-  font-size: 1rem;
-  width: 100%;
-  color: #001028;
-  box-sizing: border-box;
-}
+
 .rf-form-actions {
   display: flex;
   gap: 12px;
@@ -56,65 +55,83 @@
 }
 
 .rf-btn {
-  background-color: var(--accent);
+  background-color: var(--color-primary);
   border: none;
-  color: #001028;
+  color: var(--color-white);
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+[data-theme="dark"] .rf-btn {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverted);
 }
 
 .rf-btn:hover {
-  background-color: #1fc75f;
+  transform: translateY(-1px);
 }
 
 .rf-btn.warn {
-  background-color: #f44336;
-  color: white;
+  background-color: var(--color-alert);
+  color: var(--color-white);
 }
 
 .rf-form-status {
   margin-top: 14px;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .rf-form-status.success {
-  color: green;
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .rf-form-status.success {
+  color: var(--color-accent);
 }
 
 .rf-form-status.error {
-  color: red;
+  color: var(--color-alert);
 }
+
 /* Add consistent label styling */
 .rf-report-form label {
   display: block;
   font-weight: 600;
   margin-bottom: 6px;
-  color: #333;
+  color: var(--color-text);
 }
 
 /* Placeholder styling for inputs and textarea */
 .rf-input::placeholder,
 .rf-textarea::placeholder {
-  color: #999;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
 /* Disabled button state */
 .rf-btn:disabled {
-  background-color: #ccc;
+  background-color: var(--color-border);
   cursor: not-allowed;
-  color: #666;
+  color: var(--color-text-muted);
+  transform: none;
 }
 
 /* Focus-visible for accessibility */
 .rf-input:focus-visible,
 .rf-select:focus-visible,
 .rf-textarea:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+[data-theme="dark"] .rf-input:focus-visible,
+[data-theme="dark"] .rf-select:focus-visible,
+[data-theme="dark"] .rf-textarea:focus-visible {
+  outline-color: var(--color-accent);
 }
 
 /* Responsive adjustments */

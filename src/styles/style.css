@@ -26,6 +26,7 @@
   --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --radius: 8px;
   --radius-sm: 4px;
+  --radius-lg: 14px;
   --navbar-height: 50px;
   --footer-height: 50px;
 
@@ -142,4 +143,130 @@ button:active {
 
 a {
   color: var(--color-link);
+}
+
+/* ==================
+   SHARED UTILITIES
+   (reused across pages that don't have their own fully-themed card/tab/button
+   styles — see RatingsTable.css / OverallStandings.css for the more specific
+   versions used by the standings pages)
+   ================== */
+
+/* Fixed full-viewport background layer, used as
+   <div className="page-background bg-xyz" /> where bg-xyz supplies the
+   background-image (see Register.css/ReportCheater.css for examples) */
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-page);
+}
+
+/* Elevated card on top of the page background */
+.surface-card {
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Segmented tab control */
+.seg-tabs {
+  display: inline-flex;
+  justify-content: center;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border-heavy);
+}
+
+.seg-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  border: none;
+  background: var(--color-bg-card);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  border-right: 1px solid var(--color-border-heavy);
+}
+
+.seg-tab:last-child {
+  border-right: none;
+}
+
+.seg-tab:not(.active):hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+.seg-tab.active {
+  background: var(--color-primary);
+  color: var(--color-text-inverted);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .seg-tab.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Base buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, border-color 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .btn-primary {
+  background: var(--color-accent);
+  color: var(--color-text-inverted);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-bg-subtle);
+}
+
+.btn-danger {
+  background: var(--color-alert);
+  color: var(--color-white);
+}
+
+.btn-danger:hover:not(:disabled) {
+  filter: brightness(0.9);
 }

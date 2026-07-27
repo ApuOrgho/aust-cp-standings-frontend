@@ -1,64 +1,42 @@
 /* ------------------------------------------- */
 /* --- GLOBAL FOUNDATION STYLES (Prefixed with cs- for uniqueness) --- */
 /* ------------------------------------------- */
-.cs-page-background {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  filter: saturate(0.95) contrast(0.95);
+.bg-contest {
+  /* Intentionally no background-image — this page relies on the base
+     theme page background (var(--color-bg-page)) supplied by .page-background. */
 }
-.cs-page-background::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.cs-bg-contest {
-  /* Retaining original intent: Use this class if a specific background is needed,
-     but rely on the main application theme for base background color. */
-}
+
 .showing-range {
   white-space: pre-line;
   font-size: 0.85em;
-  color: #555; /* Light Mode */
-}
-
-/* FIX: Ensure visibility for showing-range in dark mode */
-[data-theme="dark"] .showing-range {
-  color: #8aa0c0; /* CHANGED: Replaced gray with a subtle, light blue-gray */
+  color: var(--color-text-muted);
 }
 
 /* Base button style for secondary buttons */
 .btn.secondary {
-  background-color: #11a7ec; /* A brighter blue */
-  color: white;
-  border: 1px solid #11a7ec;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
   transition: all 0.2s ease;
-  border-radius: 8px; /* Added for consistency */
+  border-radius: var(--radius);
 }
 
 .btn.secondary:hover {
-  background-color: #0c8ccc;
-  border-color: #0c8ccc;
+  filter: brightness(0.92);
 }
 
 [data-theme="dark"] .btn.secondary {
   background-color: transparent;
-  color: #11a7ec;
-  border: 1px solid #11a7ec;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
 }
 
 [data-theme="dark"] .btn.secondary:hover {
-  background-color: rgba(17, 167, 236, 0.1);
+  background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
 }
 
 /* ------------------------------------------- */
-/* --- CONTEST SEARCH SPECIFIC STYLES (IMPROVED DESIGN) --- */
+/* --- CONTEST SEARCH SPECIFIC STYLES --- */
 /* ------------------------------------------- */
 
 .contest-search-wrapper {
@@ -66,56 +44,11 @@
   padding-bottom: 40px;
 }
 
-/* --- Toggles and Tabs --- */
-
-.nc-tab-btn-container {
+/* --- Toggle between Search Standings / Upcoming Contests --- */
+.cs-tab-btn-container {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-  background-color: var(--color-card-light);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 4px; /* Added padding to contain buttons nicely */
-}
-
-[data-theme="dark"] .nc-tab-btn-container {
-  background-color: #374151; /* Darker, less distracting background for the container */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.nc-tab-btn {
-  padding: 10px 20px; /* Adjusted padding for a cleaner look */
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text-dark);
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex-grow: 1;
-  border-radius: 8px; /* Make the buttons themselves rounded inside the container */
-}
-
-[data-theme="dark"] .nc-tab-btn {
-  color: #b0c4de; /* CHANGED: Replaced gray (#ddd) with a softer blue-white for inactive text */
-}
-
-.nc-tab-btn:hover {
-  background-color: rgba(0, 0, 0, 0.05); /* Subtle hover in light mode */
-}
-
-[data-theme="dark"] .nc-tab-btn:hover {
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle hover in dark mode */
-}
-
-.nc-tab-btn.nc-active {
-  background-color: var(--color-accent); /* Usually a vibrant green/blue */
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added shadow for lift */
 }
 
 /* --- Form Container (Search Card) --- */
@@ -123,26 +56,17 @@
 .contest-search-card {
   max-width: 900px;
   margin: 0 auto;
-  padding: 40px; /* Increased padding for better spacing */
-  border-radius: 16px; /* Slightly more rounded corners */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Deeper shadow for elevation */
-  background-color: #f7f7f7; /* Slightly off-white for light mode */
-}
-
-/* Adjusting card for dark mode */
-[data-theme="dark"] .contest-search-card {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  background-color: #2c3440; /* Darker card background for contrast */
-  color: var(--color-text-light);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
 }
 
 .form-row-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(220px, 1fr)
-  ); /* Wider minimum width */
-  gap: 25px; /* Increased gap */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
   margin-bottom: 25px;
 }
 
@@ -155,80 +79,68 @@
 }
 
 [data-theme="dark"] .form-field label {
-  color: #77aaff; /* CHANGED: Swapped #b0c4de for a more vibrant blue */
+  color: var(--color-accent);
 }
 
 .contest-search-card .input,
 .contest-search-card select {
   width: 100%;
-  padding: 12px 14px; /* Increased padding */
-  border: 1px solid var(--color-border-light);
-  border-radius: 10px; /* More rounded */
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   font-size: 1rem;
-  background-color: white; /* Clean white input in light mode */
-  color: #333;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
   transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-[data-theme="dark"] .contest-search-card .input,
-[data-theme="dark"] .contest-search-card select {
-  border-color: #4a5464;
-  background-color: #212932; /* Very dark input field */
-  color: var(--color-text-light);
 }
 
 .contest-search-card .input:focus,
 .contest-search-card select:focus {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(17, 167, 236, 0.2); /* Added focus ring */
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
   outline: none;
+}
+
+[data-theme="dark"] .contest-search-card .input:focus,
+[data-theme="dark"] .contest-search-card select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 /* Search Button Style */
 .contest-search-card .btn-submit {
-  background-color: var(--color-accent);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   font-weight: 700;
   padding: 12px 25px;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contest-search-card .btn-submit:hover {
-  background-color: #069c67;
+[data-theme="dark"] .contest-search-card .btn-submit {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverted);
+}
+
+.contest-search-card .btn-submit:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contest-search-card .btn-submit:disabled {
-  background-color: #a7f3d0;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
-}
-
-[data-theme="dark"] .contest-search-card .btn-submit:disabled {
-  background-color: #10b9814d;
 }
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 600px) {
-  .nc-tab-btn-container {
-    max-width: 100%;
-    margin: 0 auto 20px auto;
-    padding: 2px;
-  }
-  .nc-tab-btn {
-    padding: 8px 10px;
-  }
   .contest-search-card {
     padding: 20px;
   }
   .form-row-grid {
-    grid-template-columns: 1fr; /* Stack columns on mobile */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 }
@@ -237,30 +149,21 @@
 .status-card {
   text-align: center;
   padding: 30px;
-  border-radius: 12px;
-  background-color: var(--color-card-light);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  max-width: 900px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--card-shadow);
   margin: 24px auto 0 auto;
-}
-
-[data-theme="dark"] .status-card {
-  background-color: var(--color-card-dark);
+  max-width: 900px;
 }
 
 .status-message {
   margin-top: 15px;
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--color-primary);
-}
-
-[data-theme="dark"] .status-message {
-  color: var(--color-text-light);
+  color: var(--color-text);
 }
 
 .error-message {
-  color: #ef4444; /* Red for error */
+  color: var(--color-alert);
   font-weight: 600;
 }

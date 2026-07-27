@@ -45,7 +45,7 @@ export default function Register() {
             <div className="reg-card reg-instructions-card">
               {/* Header */}
               <div className="reg-instructions-header">
-                <FaUserPlus size={24} style={{ color: "#007bff" }} />
+                <FaUserPlus size={24} style={{ color: "var(--color-primary)" }} />
                 <div>
                   <h2>Registration Instructions</h2>
                   <p className="reg-small">

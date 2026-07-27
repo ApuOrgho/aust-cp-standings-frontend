@@ -73,14 +73,14 @@ export default function ContactAdmin() {
         </div>
 
         <div className="ca-form-actions">
-          <button className="btn small" type="submit">
+          <button className="btn btn-primary" type="submit">
             Send Message
           </button>
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=aust.competitive.programming@gmail.com&su=General%20Inquiry"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn warn"
+            className="btn btn-outline"
           >
             Or Email Directly
           </a>

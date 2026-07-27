@@ -81,11 +81,7 @@ export default function RegisterForm() {
       className="rfm-register-form-section"
       style={{ maxWidth: 840, margin: "0 auto" }}
     >
-      <h3
-        style={{ color: "#000004", fontFamily: "system-ui", fontSize: "2em" }}
-      >
-        Register (AUST Only)
-      </h3>
+      <h3>Register (AUST Only)</h3>
 
       <div className="rfm-form-row">
         <div className="rfm-form-field">

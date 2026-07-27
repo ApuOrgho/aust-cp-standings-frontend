@@ -51,7 +51,7 @@ export default function ReportCheater() {
           {activeTab === "instructions" && (
             <div className="rc-card rc-instructions-card">
               <div className="rc-instructions-header">
-                <FaFlag size={22} style={{ color: "#f00b0bff" }} />
+                <FaFlag size={22} style={{ color: "var(--color-alert)" }} />
                 <div>
                   <h2>Report a Cheater</h2>
                   <p className="rc-small">
