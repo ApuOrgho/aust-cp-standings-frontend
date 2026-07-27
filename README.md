@@ -58,10 +58,10 @@ npm install
 touch .env
 ```
 
-create your backend, host it and add this line to it:
+Add this line to it (pointing at the deployed backend):
 
 ```env
-VITE_API_URL=https://your-backend-url.com
+VITE_API_URL=https://aust-cp-standings-backend-1.onrender.com
 ```
 
 ### 4. Run development server
@@ -81,8 +81,15 @@ Visit [http://localhost:5173](http://localhost:5173) by default.
 1. Push this frontend to GitHub.
 2. Go to [vercel.com](https://vercel.com/).
 3. Import GitHub project.
-4. During setup, add the `VITE_API_URL` environment variable.
+4. During setup, add the `VITE_API_URL` environment variable (Project → Settings →
+   Environment Variables) set to `https://aust-cp-standings-backend-1.onrender.com`.
+   Vite only inlines `VITE_*` vars at build time, so this must be set **before**
+   deploying/building, not just in the local `.env` file.
 5. Deploy and done 🎉
+
+Note: the backend is hosted on Render's free tier, which sleeps after inactivity —
+the first request after idle can take 20-30 seconds while it wakes up. The app shows
+a loading message during this time; it's expected, not a bug.
 
 ---
 

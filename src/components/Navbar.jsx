@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import { useTheme } from "../context/ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 import "../styles/comp/Navbar.css";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
+
+  const menuIconColor =
+    theme === "dark" ? "var(--color-text)" : "var(--color-text)";
 
   return (
     <>
@@ -24,13 +30,16 @@ export default function Navbar() {
               />
               <div className="navb-brand-text">
                 <div className="navb-brand-title">AUST CP</div>
-                {/* <div className="navb-brand-subtitle">Standings & Contest Hub</div> */}
               </div>
             </Link>
           </div>
 
           <nav className="navb-navbar-right">
             <div className={`navb-nav-links ${open ? "navb-open" : ""}`}>
+              <div className="navb-mobile-toggle">
+                <ThemeToggle />
+              </div>
+
               <NavLink
                 to="/"
                 className="navb-nav-link"
@@ -51,6 +60,13 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
               >
                 Contests
+              </NavLink>
+              <NavLink
+                to="/compare"
+                className="navb-nav-link"
+                onClick={() => setOpen(false)}
+              >
+                Compare
               </NavLink>
               <NavLink
                 to="/national-contests"
@@ -80,7 +96,6 @@ export default function Navbar() {
               >
                 HallOfShame
               </NavLink>
-
               <NavLink
                 to="/about"
                 className="navb-nav-link"
@@ -88,6 +103,10 @@ export default function Navbar() {
               >
                 About
               </NavLink>
+            </div>
+
+            <div className="navb-desktop-toggle">
+              <ThemeToggle />
             </div>
 
             <div
@@ -103,13 +122,12 @@ export default function Navbar() {
                 }
               }}
             >
-              <FiMenu size={26} />
+              <FiMenu size={26} color={menuIconColor} />
             </div>
           </nav>
         </div>
       </header>
 
-      {/* Spacer so content is not hidden behind fixed navbar */}
       <div className="navb-navbar-spacer" />
     </>
   );

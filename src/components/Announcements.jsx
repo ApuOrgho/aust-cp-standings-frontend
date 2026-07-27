@@ -1,31 +1,39 @@
 import React from "react";
-import {
-  getJSON,
-  parseAtCoderRatings,
-  parseCodeforcesRatings,
-  parseCodechefRatings,
-} from "../utils";
+// Removed unused utility imports for a cleaner file
 import "../styles/style.css";
 import "../styles/comp/Announcements.css";
 
 export default function Announcements() {
+  // Format the current date
+  const currentDate = "November 5, 2025";
+
   return (
     <div className="announcement-box">
-      <h1 className="announcement-title">Platform Launched!</h1>
+      <h1 className="announcement-title">Announcements</h1>
       <p className="announcement-intro">
-        We're thrilled to announce the launch of our centralized competitive
-        programming platform — your one-stop destination to track ratings,
-        standings, and integrity reports across Codeforces, AtCoder, and
-        CodeChef for AUST coders.
+        Welcome to the AUST CP Hub. Here are the latest updates, features, and
+        news from our community.
       </p>
+
+      {/* --- Announcement 1 --- */}
       <div className="announcement-card">
         <h2>AUST CP Hub is Live!</h2>
-        <p className="announcement-date">August 7, 2025</p>
+        <p className="announcement-date">{currentDate}</p>
         <p>
-          From national rankings to contest performance history, everything is
-          now under one sleek interface. Whether you're competing or just
-          curious, stay informed and inspired as we grow together as a
-          community. Explore. Compete. Rise.
+          The centralized platform is now live! Track ratings, standings, and
+          contest history across all major platforms. Explore, compete, and
+          climb the leaderboard.
+        </p>
+      </div>
+
+      {/* --- Announcement 2 --- */}
+      <div className="announcement-card">
+        <h2>Dark Mode Enabled</h2>
+        <p className="announcement-date">{currentDate}</p>
+        <p>
+          Following the latest design trends, we've implemented a full
+          light/dark mode toggle. You can switch themes using the icon in the
+          navbar.
         </p>
       </div>
     </div>

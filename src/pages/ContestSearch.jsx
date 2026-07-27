@@ -1,4 +1,3 @@
-// src/pages/ContestSearch.jsx
 import React, { useState } from "react";
 import {
   getJSON,
@@ -6,13 +5,15 @@ import {
   parseCodeforcesRatings,
   parseCodechefRatings,
 } from "../utils";
-import LoadingSpinner from "../components/LoadingSpinner";
+// Renamed the import to match the current Canvas file name
+import Spinner from "../components/LoadingSpinner";
 import ContestStandings from "../components/ContestStandings";
 import DownloadButton from "../components/DownloadButton";
 import UpcomingContests from "../components/UpcomingContests";
 import "../styles/style.css";
 import "../styles/page/ContestSearch.css";
 import "../styles/comp/RatingsTable.css";
+
 function normalizeName(n) {
   return (n || "").toString().trim().toLowerCase();
 }
@@ -51,7 +52,9 @@ export default function ContestSearch() {
     setTitle("");
     setRows([]);
     setLoading(true);
-    setLoadingMessage("Preparing search...");
+    setLoadingMessage(
+      "Preparing search... (waking up the server can take up to a minute on first load)"
+    );
 
     try {
       if (platform === "AtCoder") {
@@ -93,7 +96,7 @@ export default function ContestSearch() {
         setRows(results);
       } else if (platform === "Codeforces") {
         setLoadingMessage("Fetching AUST Codeforces users...");
-        const ratings = await getJSON("/codeforces_ratings_all");
+        const ratings = await getJSON("/codeforces_inactive_included");
         const rawArr =
           ratings.ratings_all_codeforces ||
           ratings.ratings_all ||
@@ -173,18 +176,11 @@ export default function ContestSearch() {
   }
 
   return (
-    <div className="page-wrapper">
+    <div className="page-wrapper contest-search-wrapper">
       <div className="page-background bg-contest" />
       <div className="container">
         {/* Buttons to toggle views */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 12,
-            marginBottom: 20,
-          }}
-        >
+        <div className="nc-tab-btn-container">
           <button
             className={`nc-tab-btn ${!showUpcoming ? "nc-active" : ""}`}
             onClick={() => setShowUpcoming(false)}
@@ -206,12 +202,13 @@ export default function ContestSearch() {
           <>
             <form
               onSubmit={handleSearch}
-              className="card"
-              style={{ marginBottom: 16 }}
+              className="card contest-search-card"
+              style={{ marginBottom: 24 }}
             >
-              <h2 style={{ textAlign: "center" }}>Search Contest Standings</h2>
-              <br />
-              <div className="form-row">
+              <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+                Search Contest Standings
+              </h2>
+              <div className="form-row-grid">
                 <div className="form-field">
                   <label>Platform</label>
                   <select
@@ -252,9 +249,17 @@ export default function ContestSearch() {
                 </div>
               </div>
               <div
-                style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: 8,
+                }}
               >
-                <button className="btn" type="submit" disabled={loading}>
+                <button
+                  className="btn btn-submit"
+                  type="submit"
+                  disabled={loading || !contestId}
+                >
                   {loading ? "Searching…" : "Search"}
                 </button>
               </div>
@@ -262,16 +267,16 @@ export default function ContestSearch() {
 
             {/* Loading/Error */}
             {loading && (
-              <div className="card" style={{ textAlign: "center" }}>
-                <LoadingSpinner />
-                <div style={{ marginTop: 10, fontWeight: 600 }}>
+              <div className="card status-card">
+                <Spinner />
+                <div className="status-message">
                   {loadingMessage || "Loading contest standings..."}
                 </div>
               </div>
             )}
             {error && (
-              <div className="card">
-                <div className="small">{error}</div>
+              <div className="card status-card">
+                <div className="status-message error-message">{error}</div>
               </div>
             )}
 

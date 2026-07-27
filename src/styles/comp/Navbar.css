@@ -1,20 +1,31 @@
+/* =========================
+   Navbar.css — FINAL THEMED STYLES
+   ========================= */
+
 /* Navbar fixed at top */
 .navb-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--navbar-height, 56px);
-  border-bottom: 1px solid var(--glass-border, #000000);
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  height: var(--navbar-height, 50px);
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  /* Updated border to be more subtle */
+  border-bottom: 1px solid var(--color-bg-page);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--card-shadow);
   display: flex;
   align-items: center;
   z-index: 9999;
-  color: var(--muted, #ffffff);
-  background-color: #30606d;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+[data-theme="dark"] .navb-navbar {
+  /* In dark mode, use the video's subtle border */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Inner container */
@@ -40,7 +51,7 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #eee;
+  color: var(--color-text);
   font-weight: 700;
   font-size: 18px;
 }
@@ -62,14 +73,7 @@
 .navb-brand-title {
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
-}
-
-.navb-brand-subtitle {
-  font-size: 10px;
-  opacity: 0.6;
-  margin-top: 2px;
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 /* Right side nav links */
@@ -79,81 +83,129 @@
   gap: 12px;
 }
 
-/* Nav links container for desktop */
 .navb-nav-links {
   display: flex;
   gap: 12px;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 /* Individual nav links */
 .navb-nav-link {
-  color: #ffffff;
+  color: var(--color-text);
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 4px;
   font-weight: 500;
   font-size: 14px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
+/* Light Mode: Active link is BLUE */
 .navb-nav-link:hover,
 .navb-nav-link.active {
-  color: var(--accent, #0af);
-  background-color: #00000022;
-  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  font-weight: 600;
 }
 
-/* Hamburger menu icon - hidden on desktop */
+/* --- UPDATE FOR VIDEO DESIGN --- */
+/* Dark Mode: Active link is GREEN */
+[data-theme="dark"] .navb-nav-link:hover,
+[data-theme="dark"] .navb-nav-link.active {
+  color: #111217; /* Dark text for contrast */
+  background-color: var(--color-accent); /* Green accent */
+}
+
+/* Theme Toggle Slots */
+.navb-desktop-toggle {
+  display: block;
+  margin-right: 15px;
+}
+
+.navb-mobile-toggle {
+  display: none;
+}
+
+/* Hamburger menu icon */
 .navb-menu-dots {
   display: none;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--color-text);
+  transition: color 0.3s ease;
 }
 
-/* Spacer so page content isn't hidden under fixed navbar */
 .navb-navbar-spacer {
-  height: var(--navbar-height, 56px);
+  height: var(--navbar-height, 50px);
 }
 
 /* Responsive styles for mobile */
 @media (max-width: 768px) {
-  /* Hide nav links by default on mobile */
+  .navb-desktop-toggle {
+    display: none;
+  }
+
+  .navb-mobile-toggle {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Dark mode separator */
+    margin-bottom: 5px;
+  }
+
+  [data-theme="light"] .navb-mobile-toggle {
+    border-bottom: 1px solid var(--color-bg-page); /* Light mode separator */
+  }
+
   .navb-nav-links {
     display: none;
     position: fixed;
-    top: var(--navbar-height, 56px);
+    top: var(--navbar-height, 50px);
     right: 0;
-    background: rgba(0, 0, 0, 0.85);
-    height: calc(100vh - var(--navbar-height, 56px));
-    width: 200px;
+    background: var(--color-bg-card);
+    height: calc(100vh - var(--navbar-height, 50px));
+    width: 250px;
     flex-direction: column;
     padding: 12px 0;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.8);
-    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.4);
+    backdrop-filter: none;
     z-index: 9998;
     overflow-y: auto;
   }
 
-  /* Show nav links when menu is open */
   .navb-nav-links.navb-open {
     display: flex;
   }
 
-  /* Nav links in column on mobile */
   .navb-nav-link {
     padding: 12px 16px;
     font-size: 16px;
+    color: var(--color-text);
   }
 
-  /* Show hamburger menu on mobile */
+  /* Keep mobile hover/active consistent */
+  .navb-nav-link:hover,
+  .navb-nav-link.active {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  /* Use the dark mode override for mobile too */
+  [data-theme="dark"] .navb-nav-link:hover,
+  [data-theme="dark"] .navb-nav-link.active {
+    color: #111217;
+    background-color: var(--color-accent);
+  }
+
   .navb-menu-dots {
     display: block;
+    margin-left: 5px;
   }
 }
 
-/* Remove active green & underline from HallOfShame link */
+/* HallOfShame link override */
 .navb-hallofshame-link.active {
-  color: #ffffff !important;
+  color: var(--color-text) !important;
   background-color: transparent !important;
   font-weight: 500 !important;
   text-decoration: none !important;

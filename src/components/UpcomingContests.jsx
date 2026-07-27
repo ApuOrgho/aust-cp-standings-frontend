@@ -8,11 +8,8 @@ import {
 } from "../utils";
 import "../styles/comp/UpcomingContests.css";
 function parseDateTime(dateStr, platform) {
-  if (platform === "AtCoder") {
+  if (platform === "AtCoder" || platform === "Codeforces") {
     return new Date(dateStr);
-  } else if (platform === "Codeforces") {
-    const cleaned = dateStr.replace(/\//g, " ").replace(/UTC.*/, "");
-    return new Date(cleaned + " UTC");
   } else if (platform === "CodeChef") {
     if (!dateStr.startsWith("Starts in ")) return null;
 
@@ -63,7 +60,7 @@ function formatDuration(contest) {
 function calculateStartsIn(startTime, platform) {
   if (!startTime) return "—";
 
-  if (platform === "CodeChef") {
+  if (platform === "CodeChef" || platform === "Codeforces") {
     return startTime.replace("Starts in ", "");
   }
 
@@ -110,7 +107,6 @@ function generateContestLink(contest) {
       type = "agc";
       prefix = "grand";
     }
-    
 
     if (type !== "") {
       const regex = new RegExp(
@@ -212,7 +208,11 @@ export default function UpcomingContests() {
                   })()}
                 </td>
                 <td className="upc-td">
-                  {calculateStartsIn(c.startTime, c.platform)}
+                  {c.platform === "CodeChef"
+                    ? c.startTime.replace("Starts in ", "")
+                    : c.platform === "Codeforces"
+                    ? c.extra.replace("Starts in ", "")
+                    : calculateStartsIn(c.startTime, c.platform)}
                 </td>
                 <td className="upc-td">{formatDuration(c)}</td>
                 <td className="upc-td">

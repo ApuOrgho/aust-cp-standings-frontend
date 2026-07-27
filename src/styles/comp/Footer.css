@@ -1,45 +1,121 @@
+/* =========================================
+   Footer.css — SLIM, STICKY, THEMED FOOTER
+   ========================================= */
+
 .footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: var(--footer-height);
-  background-color: #000000;
-  border-top: 1px solid var(--glass-border);
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.7);
+
+  /* Slim height */
+  padding: 10px 0;
+
+  background-color: #1b1d24;
+  color: #ededed;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.6);
+
   display: flex;
   align-items: center;
-  z-index: 900;
-  color: var(--muted);
-  background-color: #30606d;
-  transition: color 0.18s, background 0.18s;
+  z-index: 9000;
+
+  /* Scroll-in/out transition */
+  transition: transform 0.3s ease-in-out;
 }
+
+/* Theme color change */
+[data-theme="light"] .footer {
+  background-color: #2e3137;
+}
+
+/* Scroll-out effect */
+.footer-hidden {
+  transform: translateY(100%);
+}
+
 .footer-inner.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 16px;
-  max-width: 1200px;
+
+  /* Matches Navbar/content max-width */
+  max-width: var(--page-max-width, 1200px);
   margin: 0 auto;
+  padding: 0 16px;
+
   font-size: 13px;
 }
+
+.footer-subtitle {
+  font-size: 11px;
+  margin-top: 2px;
+  color: var(--color-text-muted);
+}
+
 .footer-social-links {
   display: flex;
-  gap: 16px;
+  gap: 15px;
   align-items: center;
 }
-.footer-social-links a {
-  color: var(--muted);
+
+.footer-link {
+  color: var(--color-text);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-weight: 500;
-  transition: color 0.15s;
+  font-size: 12px;
+  transition: color 0.2s;
 }
-.footer-social-links a:hover {
-  color: var(--accent);
+
+/* Ensure contrast on the dark background in light mode */
+[data-theme="light"] .footer-link {
+  color: #ededed;
+}
+
+/* Accent color on hover */
+.footer-link:hover {
+  color: var(--color-accent);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .footer {
+    padding: 8px 0;
+  }
+
+  .footer-inner.container {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-social-links {
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* "Pretty Code Design" aesthetic with accent icons */
+  .footer-link svg {
+    color: var(--color-accent);
+  }
+
+  .footer-subtitle {
+    color: #ededed;
+  }
 }

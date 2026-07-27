@@ -13,7 +13,8 @@
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  background-image: url("/assets/bg-overall.jpg"); /* Same photo as HallOfShame */
+  /* background-image: url("/assets/bg-overall.jpg");  Same photo as HallOfShame */
+  background-color: black;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

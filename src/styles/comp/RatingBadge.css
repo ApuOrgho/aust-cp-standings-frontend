@@ -1,0 +1,18 @@
+/* RatingBadge.css */
+
+.rating-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tier-color);
+  background: color-mix(in srgb, var(--tier-color) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tier-color) 35%, transparent);
+}
+
+[data-theme="dark"] .rating-badge {
+  background: color-mix(in srgb, var(--tier-color) 26%, transparent);
+  border-color: color-mix(in srgb, var(--tier-color) 50%, transparent);
+}

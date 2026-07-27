@@ -1,9 +1,9 @@
 import html2canvas from "html2canvas";
 import axios from "axios";
 
-//export const BACKEND_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
-export const BACKEND_BASE = "https://cp-standings-be.austpic.com";
+export const BACKEND_BASE =
+  import.meta.env.VITE_API_URL ||
+  "https://aust-cp-standings-backend-1.onrender.com";
 
 export async function getJSON(path, config = {}) {
   try {
@@ -31,7 +31,7 @@ export function parseCodeforcesRatings(data) {
   return data.ratings_all_codeforces.map((entry) => ({
     username: entry.username,
     rating: Number(String(entry.rating).replace(/\D/g, "")) || 0,
-    contestParticipated: entry.contestParticipated || 0,
+    maxRating: entry.maxRating || 0,
     raw: entry,
   }));
 }
@@ -47,6 +47,16 @@ export function parseCodechefRatings(data) {
     rating_star: entry.rating_star || "—",
     raw: entry,
   }));
+}
+
+export function getPlatformProfileUrl(platform, username) {
+  if (!username) return "#";
+  const user = encodeURIComponent(String(username));
+  const p = String(platform || "").toLowerCase();
+  if (p.includes("codeforces")) return `https://codeforces.com/profile/${user}`;
+  if (p.includes("atcoder")) return `https://atcoder.jp/users/${user}`;
+  if (p.includes("codechef")) return `https://www.codechef.com/users/${user}`;
+  return "#";
 }
 
 export async function exportElementToPng(

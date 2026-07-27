@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+// Assuming these are correct paths in your project
 import {
   getJSON,
   parseAtCoderRatings,
@@ -11,221 +12,215 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/style.css";
 import "../styles/page/OverallStandings.css";
 
-export default function OverallStandings() {
-  const [active, setActive] = useState("atcoder");
-  const [loading, setLoading] = useState(false);
-  const [atcoderRows, setAtcoderRows] = useState([]);
-  const [codeforcesRows, setCodeforcesRows] = useState([]);
-  const [codechefRows, setCodechefRows] = useState([]);
-  const [error, setError] = useState(null);
+// Configuration data for the standings, defining platforms and titles
+const PLATFORM_CONFIGS = {
+  atcoder: {
+    label: "AtCoder",
+    parser: parseAtCoderRatings,
+    columns: [
+      { key: "austRank", label: "AUST Rank" },
+      { key: "username", label: "Handle", linkPlatform: "atcoder" },
+      { key: "rating", label: "Rating" },
+    ],
+    containerId: "atcoder-table",
+    filenamePrefix: "atcoder_overall",
+    apiEndpoint: "/atcoder_ratings_all",
+  },
+  codeforces: {
+    label: "Codeforces",
+    parser: parseCodeforcesRatings,
+    columns: [
+      { key: "austRank", label: "AUST Rank" },
+      { key: "username", label: "Handle", linkPlatform: "codeforces" },
+      { key: "rating", label: "Rating" },
+      { key: "maxRating", label: "Max Rating" },
+    ],
+    containerId: "codeforces-table",
+    filenamePrefix: "codeforces_overall",
+    apiEndpoint: "/codeforces_ratings_all",
+  },
+  codechef: {
+    label: "CodeChef",
+    parser: parseCodechefRatings,
+    columns: [
+      { key: "austRank", label: "AUST Rank" },
+      { key: "username", label: "Handle", linkPlatform: "codechef" },
+      { key: "rating_digit", label: "Rating" },
+      { key: "rating_star", label: "Star" },
+      { key: "global_rank", label: "Global Rank" },
+    ],
+    containerId: "codechef-table",
+    filenamePrefix: "codechef_overall",
+    apiEndpoint: "/codechef_ratings_all",
+  },
+};
 
-  const loadingMessages = [
-    "This may take a few seconds...",
-    "Finding AUST users...",
-    "Collecting latest standings...",
-    "Sorting by rating...",
-    "Finalizing data — almost ready...",
-  ];
+const LOADING_MESSAGES = [
+  "Waking up the server... this can take up to a minute on first load",
+  "This may take a few seconds...",
+  "Finding AUST users...",
+  "Collecting latest standings...",
+  "Sorting by rating...",
+  "Finalizing data — almost ready...",
+];
+
+// Helper: Add AUST rank based on array index
+const withAustRank = (rows) =>
+  (rows || []).map((r, i) => ({ ...r, austRank: i + 1 }));
+
+export default function OverallStandings() {
+  const [activePlatform, setActivePlatform] = useState("codeforces"); // Setting default to Codeforces
+  const [dataCache, setDataCache] = useState({
+    atcoder: [],
+    codeforces: [],
+    codechef: [],
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState("");
-  const timeoutsRef = useRef([]);
+
+  const cfg = PLATFORM_CONFIGS[activePlatform];
+  const rowsToShow = useMemo(
+    () => withAustRank(dataCache[activePlatform]),
+    [dataCache, activePlatform]
+  );
 
   useEffect(() => {
-    async function loadAll() {
+    const platformData = dataCache[activePlatform];
+    if (platformData.length > 0) return; // Already loaded
+
+    async function fetchPlatform() {
       setLoading(true);
       setError(null);
-      setLoadingMessage(loadingMessages[0]);
 
-      timeoutsRef.current.forEach((t) => clearTimeout(t));
-      timeoutsRef.current = [];
-
-      let acc = 0;
-      for (let i = 1; i < loadingMessages.length; i++) {
-        acc += 4000;
-        const idx = i;
-        const t = setTimeout(() => {
-          setLoadingMessage(loadingMessages[idx]);
-        }, acc);
-        timeoutsRef.current.push(t);
+      // Cycle through loading messages
+      const msgTimeouts = [];
+      setLoadingMessage(LOADING_MESSAGES[0]);
+      for (let i = 1; i < LOADING_MESSAGES.length; i++) {
+        const timeout = setTimeout(
+          () => setLoadingMessage(LOADING_MESSAGES[i]),
+          i * 4000
+        );
+        msgTimeouts.push(timeout);
       }
 
       try {
-        const a = await getJSON("/atcoder_ratings_all");
-        const parsedA = parseAtCoderRatings(a);
-        parsedA.sort(
-          (x, y) =>
-            Number(y.rating || 0) - Number(x.rating || 0) ||
-            (x.username || "").localeCompare(y.username || "")
-        );
-        setAtcoderRows(parsedA);
+        const data = await getJSON(cfg.apiEndpoint);
+        let parsed = cfg.parser(data);
 
-        const cf = await getJSON("/codeforces_ratings_all");
-        const parsedCF = parseCodeforcesRatings(cf);
-        parsedCF.sort(
-          (x, y) =>
-            Number(y.rating || 0) - Number(x.rating || 0) ||
-            (x.username || "").localeCompare(y.username || "")
-        );
-        setCodeforcesRows(parsedCF);
+        // Sorting logic based on platform
+        if (activePlatform === "codeforces") {
+          parsed = parsed.map((u) => ({ ...u, rating: Number(u.rating || 0) }));
+          parsed.sort(
+            (x, y) =>
+              Number(y.rating) - Number(x.rating) ||
+              (x.username || "").localeCompare(y.username || "")
+          );
+        } else if (activePlatform === "atcoder") {
+          parsed.sort(
+            (x, y) =>
+              Number(y.rating || 0) - Number(x.rating || 0) ||
+              (x.username || "").localeCompare(y.username || "")
+          );
+        } else if (activePlatform === "codechef") {
+          parsed.sort(
+            (x, y) =>
+              Number(y.rating_digit || 0) - Number(x.rating_digit || 0) ||
+              (x.username || "").localeCompare(y.username || "")
+          );
+        }
 
-        const cc = await getJSON("/codechef_ratings_all");
-        const parsedCC = parseCodechefRatings(cc);
-        parsedCC.sort(
-          (x, y) =>
-            Number(y.rating_digit || 0) - Number(x.rating_digit || 0) ||
-            (x.username || "").localeCompare(y.username || "")
-        );
-        setCodechefRows(parsedCC);
+        // Update cache
+        setDataCache((prev) => ({ ...prev, [activePlatform]: parsed }));
       } catch (err) {
-        console.error("OverallStandings load error:", err);
-        setError("Failed to load ratings. Is backend running?");
+        console.error(`OverallStandings ${activePlatform} load error:`, err);
+        setError(`Failed to load ${cfg.label} ratings. Is backend running?`);
       } finally {
-        timeoutsRef.current.forEach((t) => clearTimeout(t));
-        timeoutsRef.current = [];
         setLoading(false);
         setLoadingMessage("");
+        msgTimeouts.forEach(clearTimeout);
       }
     }
 
-    loadAll();
+    fetchPlatform();
+  }, [activePlatform, dataCache, cfg.apiEndpoint, cfg.parser]);
 
-    return () => {
-      timeoutsRef.current.forEach((t) => clearTimeout(t));
-      timeoutsRef.current = [];
-    };
-  }, []);
-
-  const platformConfig = {
-    atcoder: {
-      rows: atcoderRows,
-      columns: [
-        { key: "austRank", label: "AUST Rank" },
-        { key: "username", label: "Username", linkPlatform: "atcoder" },
-        { key: "rating", label: "Rating" },
-      ],
-      containerId: "atcoder-table",
-      filenamePrefix: "atcoder_overall",
-      tableTitle: "AtCoder",
-      fullStandingsUrl: "https://atcoder.jp/ranking/all", // Global AtCoder rankings page
-    },
-    codeforces: {
-      rows: codeforcesRows,
-      columns: [
-        { key: "austRank", label: "AUST Rank" },
-        { key: "username", label: "Username", linkPlatform: "codeforces" },
-        { key: "rating", label: "Rating" },
-        { key: "contestParticipated", label: "Contests" },
-      ],
-      containerId: "codeforces-table",
-      filenamePrefix: "codeforces_overall",
-      tableTitle: "Codeforces",
-      fullStandingsUrl: "https://codeforces.com/ratings", // Global Codeforces ratings page
-    },
-    codechef: {
-      rows: codechefRows,
-      columns: [
-        { key: "austRank", label: "AUST Rank" },
-        { key: "username", label: "Username", linkPlatform: "codechef" },
-        { key: "rating_digit", label: "Rating" },
-        { key: "rating_star", label: "Star" },
-        { key: "global_rank", label: "Global Rank" },
-      ],
-      containerId: "codechef-table",
-      filenamePrefix: "codechef_overall",
-      tableTitle: "CodeChef",
-      fullStandingsUrl: "https://www.codechef.com/ratings", // Global CodeChef ratings page
-    },
-  };
-
-  function withAustRank(rows) {
-    return (rows || []).map((r, i) => ({ ...r, austRank: i + 1 }));
-  }
-
-  const cfg = platformConfig[active];
-  const rowsToShow = withAustRank(cfg.rows);
-
+  // Cleaned JSX Structure
   return (
-    <div className="page-wrapper">
-      {/* Background */}
-      <div className="page-background bg-contest" />
-
-      <div className="container">
-        <section className="standings-section">
-          <div className="standings-inner">
+    <div className="page-wrapper overall-standings-page-wrapper">
+      <div className="container standings-container">
+        <section className="standings-card">
+          {/* Main Title and Subtitle */}
+          <div className="standings-header">
             <h1 className="standings-title">Overall Standings</h1>
-            <div className="standings-subtitle">
+            <p className="standings-subtitle">
               Ahsanullah University of Science and Technology (AUST)
-            </div>
+            </p>
+          </div>
 
+          {/* Platform Selection Tabs (Segmented Control - Centered) */}
+          <div className="platform-tabs-wrapper">
             <div
-              className="platform-buttons"
+              className="platform-tabs"
               role="tablist"
               aria-label="Platform selection"
             >
-              <button
-                className={`btn ${active === "atcoder" ? "" : "ghost"}`}
-                onClick={() => setActive("atcoder")}
-              >
-                AtCoder
-              </button>
-              <button
-                className={`btn ${active === "codeforces" ? "" : "ghost"}`}
-                onClick={() => setActive("codeforces")}
-              >
-                Codeforces
-              </button>
-              <button
-                className={`btn ${active === "codechef" ? "" : "ghost"}`}
-                onClick={() => setActive("codechef")}
-              >
-                CodeChef
-              </button>
+              {Object.keys(PLATFORM_CONFIGS).map((key) => (
+                <button
+                  key={key}
+                  className={`platform-tab ${
+                    key === activePlatform ? "active" : ""
+                  }`}
+                  onClick={() => setActivePlatform(key)}
+                  aria-selected={key === activePlatform}
+                  role="tab"
+                >
+                  {PLATFORM_CONFIGS[key].label}
+                </button>
+              ))}
             </div>
+          </div>
 
+          <div className="standings-content">
+            {/* Loading */}
             {loading && (
-              <div className="card" style={{ textAlign: "center" }}>
+              <div className="standings-loading-box">
                 <LoadingSpinner />
-                <div style={{ marginTop: 10, fontWeight: 600 }}>
+                <div className="loading-message">
                   {loadingMessage || "Loading contest standings..."}
                 </div>
               </div>
             )}
 
-            {error && <div className="error-card">{error}</div>}
+            {/* Error */}
+            {error && <div className="standings-error-box">{error}</div>}
 
+            {/* Standings Table */}
             {!loading && !error && (
-              <>
-                <div
-                  className="download-wrapper"
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    marginRight: "0.5rem",
-                  }}
-                >
+              <div className="standings-table-wrapper">
+                {/* Actions Row (Download Button) */}
+                <div className="standings-actions">
                   <DownloadButton
                     containerId={cfg.containerId}
                     filenamePrefix={cfg.filenamePrefix}
+                    // Apply a specific button style class for the ghost look
+                    className="btn-primary-ghost"
                   />
                 </div>
 
                 <RatingsTable
                   title={
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: "1.5em", fontWeight: "bold" }}>
-                        {cfg.tableTitle}
-                      </div>
-                      <div className="standings-subtitle">
-                        Ahsanullah University of Science and Technology (AUST)
-                      </div>
-                    </div>
+                    <h2 className="ratings-table-platform-title">
+                      {cfg.label} Standings
+                    </h2>
                   }
                   rows={rowsToShow}
                   columns={cfg.columns}
                   containerId={cfg.containerId}
                   defaultPageSize={20}
-                  fullStandingsUrl={cfg.fullStandingsUrl} // pass Full Standings URL here
+                  platform={activePlatform}
                 />
-              </>
+              </div>
             )}
           </div>
         </section>

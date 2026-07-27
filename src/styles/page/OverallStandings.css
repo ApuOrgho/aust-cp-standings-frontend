@@ -1,26 +1,164 @@
-.page-background {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  filter: saturate(0.95) contrast(0.95);
+/* OverallStandings.css - Final Version */
+
+/* --- Page Wrapper (Use new class name) --- */
+.overall-standings-page-wrapper {
+  padding: 30px 15px;
+  min-height: calc(100vh - var(--navbar-height, 50px));
 }
-.page-background::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+
+/* --- Container (Use new class name for card wrapper) --- */
+.standings-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* This container manages the max-width for the page content */
+  max-width: 900px;
+  margin: 0 auto;
 }
-.bg-overall {
-  background-image: url("/assets/bg-overall.jpg");
+
+/* --- Standings Card (Central component for content) --- */
+.standings-card {
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  padding: 30px;
+  border-radius: var(--radius); /* Use the standard radius */
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
-.standings-section {
-  background: var(--white);
-  color: var(--black);
-  padding: 30px 0 44px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+
+/* --- Header Styles (Title and Subtitle) --- */
+.standings-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border); /* Use the subtle border variable */
+}
+
+.standings-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+[data-theme="dark"] .standings-title {
+  color: var(--color-accent);
+}
+
+.standings-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Platform Tabs Wrapper (Ensures the segmented control block is centered) --- */
+.platform-tabs-wrapper {
+  text-align: center; /* Centers the inline-flex container */
+}
+
+.platform-tabs {
+  display: inline-flex; /* Shrink container to fit buttons */
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 30px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border-heavy); /* Use heavy border for the group outline */
+}
+
+/* Tab Button Base Style (Segmented Look) */
+.platform-tab {
+  padding: 8px 20px;
+  cursor: pointer;
+  border: none;
+  background: var(--color-bg-card);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  transition: all 0.2s;
+  border-right: 1px solid var(--color-border-heavy);
+}
+
+.platform-tab:last-child {
+  border-right: none;
+}
+
+.platform-tab:not(.active):hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+/* Active Tab Style */
+.platform-tab.active {
+  background: var(--color-primary);
+  color: var(--color-text-inverted);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .platform-tab.active {
+  background: var(--color-accent);
+  color: var(--color-text-inverted);
+  border-color: var(--color-accent);
+}
+
+/* --- Loading & Error Boxes --- */
+.standings-loading-box,
+.standings-error-box {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: var(--radius);
+  background-color: var(
+    --color-bg-subtle
+  ); /* Use subtle background for loading boxes */
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.loading-message {
+  margin-top: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.standings-error-box {
+  color: var(--color-alert);
+  border: 1px solid var(--color-alert);
+}
+
+/* --- Table Wrapper and Actions --- */
+.standings-table-wrapper {
+  margin-top: 20px;
+}
+
+.standings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+/* Table specific title (passed via prop) */
+.ratings-table-platform-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--color-text);
+  margin: 0;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .standings-card {
+    padding: 20px 15px;
+  }
+  .standings-title {
+    font-size: 2rem;
+  }
+  .platform-tabs {
+    width: 100%;
+    display: flex;
+  }
+  .platform-tab {
+    flex-grow: 1;
+    padding: 10px 5px;
+    font-size: 14px;
+  }
 }

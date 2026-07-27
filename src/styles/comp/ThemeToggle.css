@@ -1,0 +1,39 @@
+/* src/styles/comp/ThemeToggle.css */
+
+.theme-toggle-btn {
+  /* Layout and dimensions */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Colors */
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.theme-toggle-btn:hover {
+  /* Subtle hover effect */
+  background-color: var(--color-text-muted);
+  opacity: 1;
+}
+
+/* Light Mode: Moon icon uses primary brand color */
+[data-theme="light"] .theme-toggle-btn {
+  color: var(--color-primary);
+}
+
+/* Dark Mode: Sun icon uses accent color to stand out */
+[data-theme="dark"] .theme-toggle-btn {
+  color: var(--color-accent);
+}
+
+/* Fix for mobile menu display */
+.navb-mobile-toggle .theme-toggle-btn {
+  margin: 0 auto;
+}
